@@ -5,20 +5,14 @@
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
+:root {
+  color-scheme: light;
+}
+
 body {
   font-family: var(--font-sans);
   background-color: #F3F1EA;
   color: #15120E;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    filter: invert(1);
-  }
-
-  img.photo {
-    filter: invert(1);
-  }
 }
 
 main > section:not(:first-child) .text-xs {
