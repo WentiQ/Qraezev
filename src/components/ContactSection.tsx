@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Mail, Send, CheckCircle2, MessageSquare, ArrowRight, Building, HelpCircle, Linkedin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mail, Send, CheckCircle2, MessageSquare, ArrowRight, Building, HelpCircle, Linkedin, Loader2 } from 'lucide-react';
 
 interface ContactSectionProps {
   initialMode?: string;
@@ -12,17 +12,74 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
   const [organization, setOrganization] = useState('');
   const [robotPlatform, setRobotPlatform] = useState('');
   const [failureDescription, setFailureDescription] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    if (initialMode === 'software') {
+      setPartnerType('robotics_startup');
+    } else if (initialMode === 'embedded') {
+      setPartnerType('industrial_rd');
+    }
+  }, [initialMode]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !email.includes('@')) {
       setError('Please provide your name and a valid email address.');
       return;
     }
+
     setError('');
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "19661b88-58a6-43d1-a590-1b69127b74bb");
+      formData.append("name", name.trim());
+      formData.append("email", email.trim());
+      formData.append("organization", organization.trim() || "Not specified");
+      formData.append("partner_type", partnerType);
+      formData.append("robot_platform", robotPlatform.trim() || "Not specified");
+      formData.append("subject", `New Pilot Inquiry: ${name.trim()} (${organization.trim() || partnerType})`);
+      formData.append("from_name", "QRAEZEV Website");
+
+      const fullMessage = [
+        `Partner / Profile: ${partnerType}`,
+        `Organization: ${organization.trim() || 'Not specified'}`,
+        `Robot Platform / Stack: ${robotPlatform.trim() || 'Not specified'}`,
+        '',
+        '--- Recurring Failure Pattern / Details ---',
+        failureDescription.trim() || 'No additional details provided.'
+      ].join('\n');
+
+      formData.append("message", fullMessage);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmittedName(name.trim());
+        setSubmitted(true);
+        setName('');
+        setEmail('');
+        setOrganization('');
+        setRobotPlatform('');
+        setFailureDescription('');
+      } else {
+        setError(data.message || 'Submission failed. Please try again or contact us directly.');
+      }
+    } catch (err) {
+      setError('Network error: Unable to send inquiry. Please check your connection or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -146,11 +203,14 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                     Inquiry Received
                   </h3>
                   <p className="text-xs text-[#554E44] max-w-md mx-auto leading-relaxed">
-                    Thank you, {name}. We will review your failure profile and respond from <span className="font-mono text-[#15120E]">dineshpolavarapu66@gmail.com</span> shortly to discuss technical feasibility.
+                    Thank you{submittedName ? `, ${submittedName}` : ''}. Your inquiry has been sent successfully. We will review your failure profile and respond from <span className="font-mono text-[#15120E]">dineshpolavarapu66@gmail.com</span> shortly to discuss technical feasibility.
                   </p>
                   <div className="pt-4">
                     <button
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => {
+                        setSubmitted(false);
+                        setError('');
+                      }}
                       className="px-4 py-2 text-xs font-semibold text-[#15120E] bg-[#FAF8F3] hover:bg-[#EFECE3] border border-[#D8D2C2] rounded transition-colors"
                     >
                       Submit another inquiry
@@ -158,7 +218,15 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-7">
+                <form
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="space-y-7"
+                >
+                  <input type="hidden" name="access_key" value="19661b88-58a6-43d1-a590-1b69127b74bb" />
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
                   <div className="border-b border-[#F3F1EA] pb-3">
                     <h3 className="text-lg font-bold text-[#15120E]">
                       Explore a Design Partnership
@@ -204,6 +272,7 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -217,6 +286,7 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -234,6 +304,7 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                       </label>
                       <input
                         type="text"
+                        name="organization"
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
                         placeholder="e.g. Apex Automation"
@@ -246,6 +317,7 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                       </label>
                       <input
                         type="text"
+                        name="robot_platform"
                         value={robotPlatform}
                         onChange={(e) => setRobotPlatform(e.target.value)}
                         placeholder="e.g. UR5e / ROS 2 / ABB / Custom"
@@ -261,6 +333,7 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                     </label>
                     <textarea
                       rows={3}
+                      name="message"
                       value={failureDescription}
                       onChange={(e) => setFailureDescription(e.target.value)}
                       placeholder="e.g. Jamming during peg insertion when fixture alignment shifts; slip during grasping of oily parts; recurring need to manually recalibrate approach angles."
@@ -277,10 +350,20 @@ export function ContactSection({ initialMode }: ContactSectionProps) {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-[#FFB800] hover:bg-[#e6a600] active:translate-y-0.5 rounded transition-all shadow-xs"
+                      disabled={isSubmitting}
+                      className="w-full flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-[#FFB800] hover:bg-[#e6a600] active:translate-y-0.5 rounded transition-all shadow-xs disabled:opacity-65 disabled:cursor-not-allowed cursor-pointer"
                     >
-                      <span>Send Pilot Inquiry</span>
-                      <Send className="w-3.5 h-3.5" />
+                      {isSubmitting ? (
+                        <>
+                          <span>Sending Pilot Inquiry...</span>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Pilot Inquiry</span>
+                          <Send className="w-3.5 h-3.5" />
+                        </>
+                      )}
                     </button>
                   </div>
 
