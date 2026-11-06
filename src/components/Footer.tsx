@@ -7,7 +7,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10 bg-[#15120E] py-16 text-sm text-[#D8D2C2]">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="site-container">
         
         {/* Main Footer Row */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-14 border-b border-white/15">

@@ -3,10 +3,10 @@ import { AlertOctagon, RotateCw, Wrench, Clock, DollarSign, CheckCircle2 } from 
 export function ProblemSection() {
   return (
     <section id="problem" className="py-24 md:py-32 relative">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="site-container">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-20">
+        <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mb-20">
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-3">
             <span>01 · The Operational Reality</span>
             <span aria-hidden="true" className="text-[#BAAF96]">·</span>

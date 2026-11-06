@@ -40,12 +40,12 @@ export function Navbar({ onOpenContact }: NavbarProps) {
   ];
 
   return (
-    <header className={`sticky top-4 z-40 mx-4 md:mx-8 rounded-full bg-[#F3F1EA]/90 backdrop-blur-md border border-[#D8D2C2]/60 shadow-md transition-[transform,opacity] duration-300 ease-out ${
+    <header className={`sticky top-4 z-40 mx-auto w-[calc(100%-2rem)] md:w-[calc(100%-4rem)] max-w-[96vw] 2xl:max-w-[92vw] rounded-full bg-[#F3F1EA]/90 backdrop-blur-md border border-[#D8D2C2]/60 shadow-md transition-[transform,opacity] duration-300 ease-out ${
       visible || mobileMenuOpen
         ? 'translate-y-0 opacity-100'
         : '-translate-y-[calc(100%+1rem)] opacity-0 pointer-events-none'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 h-18 flex items-center justify-between gap-8">
+      <div className="w-full px-6 sm:px-8 lg:px-10 h-18 flex items-center justify-between gap-8">
         
         {/* Zone 1: Single wordmark lockup */}
         <a

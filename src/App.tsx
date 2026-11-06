@@ -28,7 +28,7 @@ export default function App() {
       <Navbar onOpenContact={handleOpenContact} />
 
       {/* Main Single-Page Content Flow */}
-      <main className="flex-1">
+      <main className="flex-1 w-full">
         {/* Section 1: Hero */}
         <Hero onOpenContact={handleOpenContact} />
 

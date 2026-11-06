@@ -22,7 +22,7 @@ export function Hero({ onOpenContact }: HeroProps) {
         </svg>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-32 pb-12 md:pt-32 md:pb-12 relative z-10">
+      <div className="site-container pt-32 pb-12 md:pt-32 md:pb-12 relative z-10">
         <div className="flex items-center justify-center gap-2.5 text-xs font-semibold tracking-wider uppercase text-[#8A8275] mb-14 md:mb-20 text-center">
           <span className="inline-block w-2 h-2 rounded-full bg-[#FFB800]" />
           <span>The Experience Layer for Physical AI</span>
@@ -30,9 +30,9 @@ export function Hero({ onOpenContact }: HeroProps) {
           <span>Robot-Agnostic Cognitive Architecture</span>
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto">
-          <div data-neural-text className="mx-auto max-w-4xl space-y-12 md:space-y-16 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] font-extrabold text-[#15120E] tracking-tight leading-[1.08] text-balance">
+        <div className="relative z-10 max-w-5xl 2xl:max-w-6xl mx-auto">
+          <div data-neural-text className="mx-auto max-w-4xl 2xl:max-w-5xl space-y-12 md:space-y-16 text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] 2xl:text-[68px] font-extrabold text-[#15120E] tracking-tight leading-[1.08] text-balance">
               Robots act.
               <br />
               <span className="relative inline-block mt-1">
@@ -62,7 +62,7 @@ export function Hero({ onOpenContact }: HeroProps) {
               </span>
             </h1>
 
-            <p className="mx-auto max-w-2xl text-lg sm:text-xl text-[#443E37] leading-relaxed font-normal">
+            <p className="mx-auto max-w-2xl 2xl:max-w-3xl text-lg sm:text-xl 2xl:text-2xl text-[#443E37] leading-relaxed font-normal">
               QRAEZEV is developing a robot-agnostic cognitive layer: a persistent experience system that sits above existing control stacks, enabling machines to keep, reuse, and improve what they learn on the job.
             </p>
 
