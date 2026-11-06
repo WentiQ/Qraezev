@@ -15,7 +15,7 @@ export function Footer() {
           {/* Brand & Mission Statement */}
           <div className="md:col-span-5 space-y-6">
             <div className="flex items-center gap-3">
-              <img src="/assets/images/logo_logo_W.png" alt="" className="h-8 w-8 object-contain" />
+              <img src="/assets/images/logo.svg" alt="" className="h-8 w-8 object-contain" />
               <img src="/assets/images/wordmark_w.png" alt="QRAEZEV" className="h-auto w-28 object-contain" />
             </div>
             

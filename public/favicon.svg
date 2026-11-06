@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g transform="translate(69, 46.5)">
+    <defs>
+      <linearGradient id="fold" gradientUnits="userSpaceOnUse" x1="7.5" y1="-7.5" x2="250.5" y2="235.5">
+        <stop offset="0" stop-color="#d6d6d6"/>
+        <stop offset="0.55" stop-color="#888888"/>
+        <stop offset="1" stop-color="#212121"/>
+      </linearGradient>
+      <g id="unit">
+        <polygon points="258,0 258,196 165,128" fill="url(#fold)"/>
+        <polygon points="144,0 258,0 88,228 0,160" fill="#080808"/>
+      </g>
+    </defs>
+    <use xlink:href="#unit" href="#unit"/>
+    <use xlink:href="#unit" href="#unit" transform="translate(116 191) rotate(180 129 114)"/>
+  </g>
+</svg>

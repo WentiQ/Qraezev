@@ -52,7 +52,7 @@ export function Navbar({ onOpenContact }: NavbarProps) {
           href="#"
           className="flex items-center gap-3 text-lg font-bold tracking-tight text-[#15120E] whitespace-nowrap shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB800] rounded-sm py-1"
         >
-          <img src="/assets/images/logo_logo.png" alt="" className="h-9 w-9 sm:h-11 sm:w-11 md:h-12 md:w-12 object-contain" />
+          <img src="/assets/images/logo_inverted.svg" alt="" className="h-9 w-9 sm:h-11 sm:w-11 md:h-12 md:w-12 object-contain" />
           <img src="/assets/images/wordmark_logo.png" alt="QRAEZEV" className="h-auto w-28 object-contain" />
         </a>
 
