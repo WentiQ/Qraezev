@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import { NeuralField } from './NeuralField';
+import { ScrollReveal } from './ScrollReveal';
 
 interface HeroProps {
   onOpenContact: (mode?: string) => void;
@@ -8,10 +9,11 @@ interface HeroProps {
 export function Hero({ onOpenContact }: HeroProps) {
   return (
     <section
-      className="relative flex flex-col justify-center overflow-hidden"
-      style={{ minHeight: 'calc(100svh - 4.5rem)' }}
+      id="hero"
+      className="relative min-h-[calc(100svh-4rem)] sm:min-h-[calc(100svh-5rem)] flex flex-col justify-center items-center overflow-hidden bg-[#F3F1EA] py-6 sm:py-12 lg:py-16"
     >
-      <div className="absolute inset-0 pointer-events-none opacity-40">
+      {/* 1. Subtle Architectural Grid Overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-0">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="sketch-grid" width="72" height="72" patternUnits="userSpaceOnUse">
@@ -22,84 +24,76 @@ export function Hero({ onOpenContact }: HeroProps) {
         </svg>
       </div>
 
-      <div className="site-container pt-32 pb-12 md:pt-32 md:pb-12 relative z-10">
-        <div className="flex items-center justify-center gap-2.5 text-xs font-semibold tracking-wider uppercase text-[#8A8275] mb-14 md:mb-20 text-center">
-          <span className="inline-block w-2 h-2 rounded-full bg-[#FFB800]" />
-          <span>The Experience Layer for Physical AI</span>
-          <span aria-hidden="true" className="text-[#BAAF96]">·</span>
-          <span>Robot-Agnostic Cognitive Architecture</span>
-        </div>
+      {/* 2. Ambient Warm Radial Illumination */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-[900px] h-[350px] sm:h-[400px] rounded-full pointer-events-none blur-[140px] opacity-25"
+        style={{
+          background: 'radial-gradient(ellipse at center, #FFB800 0%, #D46215 50%, transparent 80%)',
+        }}
+      />
 
-        <div className="relative z-10 max-w-5xl 2xl:max-w-6xl mx-auto">
-          <div data-neural-text className="mx-auto max-w-4xl 2xl:max-w-5xl space-y-12 md:space-y-16 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] 2xl:text-[68px] font-extrabold text-[#15120E] tracking-tight leading-[1.08] text-balance">
-              Robots act.
-              <br />
-              <span className="relative inline-block mt-1">
-                <span className="relative z-10 text-[#15120E]">Experience helps them learn.</span>
-                <svg
-                  className="absolute left-0 -bottom-1 w-full h-4 -z-0 overflow-visible"
-                  viewBox="0 0 400 16"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M 2 8 C 80 14, 180 3, 270 11 C 330 16, 380 7, 398 9"
-                    stroke="#FFB800"
-                    strokeWidth="7"
-                    strokeLinecap="round"
-                    strokeOpacity="0.75"
-                  />
-                  <path
-                    d="M 12 11 C 95 6, 210 13, 310 8 C 360 5, 385 10, 395 8"
-                    stroke="#15120E"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                    strokeDasharray="4 6"
-                    opacity="0.35"
-                  />
-                </svg>
-              </span>
-            </h1>
+      {/* 3. Text & Content Layer: Monumental & Clean */}
+      <div 
+        data-neural-text
+        className="site-container relative z-10 flex flex-col justify-center items-center text-center px-1.5 sm:px-8 max-w-5xl mx-auto my-auto"
+      >
+        {/* Monumental Headline */}
+        <ScrollReveal delay={100} duration={1000} scaleFrom={0.93} blurFrom={16} className="max-w-4xl mx-auto mb-4 sm:mb-6">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-[80px] xl:text-[88px] font-extrabold text-[#15120E] tracking-tight leading-[1.05] sm:leading-[1.03] text-balance drop-shadow-xs">
+            Robots act.
+            <br />
+            <span className="font-light text-[#736B5E]">Experience helps them learn.</span>
+          </h1>
+        </ScrollReveal>
 
-            <p className="mx-auto max-w-2xl 2xl:max-w-3xl text-lg sm:text-xl 2xl:text-2xl text-[#443E37] leading-relaxed font-normal">
-              QRAEZEV is developing a robot-agnostic cognitive layer: a persistent experience system that sits above existing control stacks, enabling machines to keep, reuse, and improve what they learn on the job.
-            </p>
+        {/* Crisp, Spacious Subtitle */}
+        <ScrollReveal delay={250} duration={950} scaleFrom={0.94} blurFrom={12}>
+          <p className="max-w-xl sm:max-w-3xl text-sm sm:text-base md:text-xl text-[#554E44] font-light leading-relaxed mb-6 sm:mb-10">
+            A persistent cognitive runtime above existing robot controllers. Machines retain operational experience to make better decisions.
+          </p>
+        </ScrollReveal>
 
-            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-              <button
-                onClick={() => onOpenContact('pilot')}
-                className="pilot-cta relative inline-flex items-center justify-center gap-3 pl-6 pr-2 py-2 text-sm font-bold uppercase tracking-wider text-white bg-[#15120E] hover:bg-[#302b25] active:translate-y-0.5 rounded-full shadow-[3px_3px_0px_0px_#15120E] transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#15120E]"
-              >
-                <span>Discuss a Pilot</span>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFB800] text-[#15120E]">
-                  <ArrowRight className="w-4 h-4" />
-                </span>
-              </button>
+        {/* Prominent Homescreen Action CTAs (Guaranteed above the fold) */}
+        <ScrollReveal delay={400} duration={900} scaleFrom={0.92} blurFrom={14} className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-6 sm:mb-10">
+          <button
+            onClick={() => onOpenContact('pilot')}
+            className="inline-flex items-center gap-2.5 sm:gap-3.5 pl-5 pr-2 py-2.5 sm:pl-8 sm:pr-3.5 sm:py-3.5 text-xs sm:text-base font-bold text-white bg-[#15120E] hover:bg-[#2C2620] active:scale-[0.98] rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+          >
+            <span>Discuss a Pilot</span>
+            <span className="flex h-7 w-7 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-[#FFB800] text-[#15120E] group-hover:translate-x-0.5 transition-transform">
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            </span>
+          </button>
 
-              <a
-                href="#approach"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-semibold text-[#15120E] bg-white hover:bg-[#FAF8F3] border-1.5 border-[#15120E] rounded-[10px_4px_12px_6px] transition-colors shadow-[2px_2px_0px_0px_rgba(21,18,14,0.15)]"
-              >
-                <span>Explore the Architecture</span>
-              </a>
-            </div>
+          <a
+            href="#approach"
+            className="inline-flex items-center justify-center px-5 py-2.5 sm:px-8 sm:py-3.5 text-xs sm:text-base font-semibold text-[#15120E] bg-white/80 hover:bg-white border border-[#D8D2C2] hover:border-[#15120E] rounded-full transition-all duration-300 backdrop-blur-xs shadow-xs hover:shadow-md cursor-pointer"
+          >
+            <span>Explore Architecture</span>
+          </a>
+        </ScrollReveal>
 
-            <div className="pt-6 border-t border-[#D8D2C2]/70 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#6B6358]">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-[#15120E]">Safety Guarded:</span>
-                <span>Retains independent E-stop &amp; servo control</span>
-              </div>
-              <span className="hidden sm:inline text-[#D8D2C2]">|</span>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-[#15120E]">Hardware Agnostic:</span>
-                <span>Adapts across 6-DOF, cobots, &amp; mobiles</span>
-              </div>
-            </div>
+        {/* Monospace Architecture Telemetry Status Line */}
+        <ScrollReveal delay={550} duration={850} scaleFrom={0.95} blurFrom={10} className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-1.5 text-[10px] sm:text-xs font-mono text-[#8A8275] uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D46215]" />
+            <span>Deterministic Safety Gateway</span>
           </div>
+          <span className="text-[#D8D2C2] hidden sm:inline">·</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
+            <span>Low-Latency Memory Retrieval</span>
+          </div>
+          <span className="text-[#D8D2C2] hidden sm:inline">·</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8A8275]" />
+            <span>Robot-Agnostic Schema</span>
+          </div>
+        </ScrollReveal>
 
-        </div>
       </div>
+
+      {/* 4. Interactive Neural Field Particles (Softly Blurred Background Effect) */}
       <NeuralField />
     </section>
   );

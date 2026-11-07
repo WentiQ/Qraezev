@@ -1,198 +1,175 @@
-import { Cpu, Terminal, ShieldCheck, HardDrive, WifiOff, RefreshCw, Box, Check, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Cpu, Layers } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 interface ProductDirectionProps {
   onOpenContact: (mode?: string) => void;
 }
 
 export function ProductDirection({ onOpenContact }: ProductDirectionProps) {
-  const comparisonItems = [
-    { dimension: 'Core Cognition', software: 'Identical cognitive architecture', embedded: 'Identical cognitive architecture' },
-    { dimension: 'Deployment Host', software: 'Existing robot industrial PC, workstation, or edge box', embedded: 'Dedicated onboard compute module inside robot chassis' },
-    { dimension: 'External Connection', software: 'Permitted local network or direct IPC bus', embedded: 'Self-contained; zero external network required' },
-    { dimension: 'Cloud Dependency', software: 'None for real-time cognitive loop (optional analytics)', embedded: 'Zero; 100% offline-first execution' },
-    { dimension: 'Robot Adapter', software: 'Standardized Adapter SDK', embedded: 'Standardized Adapter SDK over CAN/Ethernet/USB' },
-    { dimension: 'Persistent Memory', software: 'Local NVMe / database storage', embedded: 'Protected transactional non-volatile storage' },
-    { dimension: 'Current Status', software: 'Primary R&D wedge & simulation validation', embedded: 'Workload profiling & prototype architecture' },
-  ];
-
   return (
-    <section id="products" className="py-24 md:py-32 border-t border-[#D8D2C2]/70 relative">
-      <div className="site-container">
+    <section id="products" className="relative bg-[#F3F1EA] text-[#15120E] py-16 sm:py-32 md:py-48 lg:py-60 overflow-hidden border-t border-[#D8D2C2]">
+      
+      <div className="site-container relative z-10 px-1.5 sm:px-8 max-w-6xl mx-auto">
         
-        {/* Section Header */}
-        <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mb-20">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-3">
-            <span>03 · Product Direction</span>
-            <span aria-hidden="true" className="text-[#BAAF96]">·</span>
-            <span>One Brain · Two Embodiments</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#15120E] tracking-tight leading-tight text-balance">
-            Software runtime today.
+        {/* Section Header: Expansive Negative Space & Monumental Typography */}
+        <ScrollReveal scaleFrom={0.92} blurFrom={14} className="text-center max-w-3xl mx-auto mb-12 sm:mb-24 md:mb-36">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.04] sm:leading-[1.02] text-[#15120E]">
+            One cognitive core.
             <br />
-            Dedicated onboard hardware tomorrow.
+            <span className="text-[#8A8275] font-light">Two deployment forms.</span>
           </h2>
-          <p className="mt-4 text-lg text-[#443E37] leading-relaxed">
-            The same cognitive architecture evolves through two distinct deployment forms. We first prove the brain in software using existing industrial PCs and simulation, then engineer dedicated onboard embedded hardware around measured real-world workloads.
-          </p>
-        </div>
 
-        {/* The Two Product Cards with Asymmetric Tilts & Offset Sketch Layers */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+          <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl lg:text-2xl text-[#554E44] font-light leading-relaxed max-w-2xl mx-auto">
+            First prove the architecture in software. Then engineer hardware around measured workloads.
+          </p>
+        </ScrollReveal>
+
+        {/* The Two Embodiments: Spacious, Breathable Diptych (Low Text, High Impact) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-14 md:gap-20 mb-14 sm:mb-28 md:mb-40">
           
-          {/* Product A: QRAEZEV Software */}
-          <div className="relative">
-            <div 
-              className="absolute inset-0 bg-[#E8DFC8] border border-[#D8D2C2] rounded-[18px_6px_16px_8px] -rotate-1 translate-x-1 translate-y-2 pointer-events-none"
-              aria-hidden="true"
-            />
-            <div className="relative bg-[#FAF8F3] border-1.5 border-[#15120E] rounded-[16px_5px_15px_6px] p-8 sm:p-10 flex flex-col justify-between shadow-[3px_3px_0px_0px_#15120E] -rotate-[0.6deg] hover:rotate-0 transition-transform h-full">
+          {/* Form 01: Software Runtime */}
+          <ScrollReveal delay={100} scaleFrom={0.91} blurFrom={16}>
+            <div className="h-full flex flex-col justify-between p-4 sm:p-10 lg:p-14 rounded-2xl sm:rounded-[36px] md:rounded-[42px] bg-white border border-[#D8D2C2] shadow-sm">
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#8A8275] bg-white px-2 py-0.5 rounded-[4px_2px_5px_2px] border border-[#E8DFC8]">
-                    Product A · Near-Term Wedge
+                <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-[#E8DFC8]">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#D46215]">
+                    Product A · Immediate Wedge
                   </span>
-                  <span className="text-xs font-semibold text-[#15120E] bg-[#FFB800] px-2 py-0.5 rounded-[3px_5px_2px_4px]">
-                    Software-Only Runtime
+                  <span className="text-[10px] sm:text-xs font-mono text-[#15120E] bg-[#FFB800] px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full font-semibold">
+                    Software Runtime
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-extrabold text-[#15120E] mb-2">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FAF8F3] border border-[#E8DFC8] text-[#D46215] flex items-center justify-center mb-4 sm:mb-6">
+                  <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#15120E] tracking-tight mb-3 sm:mb-4">
                   QRAEZEV Software
                 </h3>
-                <p className="text-sm text-[#443E37] leading-relaxed mb-6">
-                  A deployable cognitive runtime operating above a robot&apos;s existing control stack. Integrates with existing industrial PCs, research workstations, or edge boxes via a clean adapter layer.
+
+                <p className="text-sm sm:text-base md:text-lg text-[#554E44] font-light leading-relaxed mb-6 sm:mb-10">
+                  Runs on existing robot PCs, edge boxes, or simulation. Adds a persistent memory layer via an adapter SDK without dedicated hardware.
                 </p>
 
-                <div className="space-y-4 pt-4 border-t border-[#E8DFC8]">
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Zero hardware replacement:</strong> Runs alongside existing robot controllers without altering warranty or physical actuation loops.</span>
+                {/* 3 Clean Spec Points */}
+                <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 border-t border-[#E8DFC8] text-xs sm:text-sm font-mono text-[#554E44]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#8A8275]">Deployment Target</span>
+                    <span className="text-[#15120E] font-semibold">Robot PC / Edge / Sim</span>
                   </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Standardized Adapter SDK:</strong> Decouples robot-specific kinematics (ABB, FANUC, UR, ROS 2) from core cognitive reasoning.</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#8A8275]">Integration</span>
+                    <span className="text-[#15120E] font-semibold">Robot Adapter SDK</span>
                   </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Deterministic Simulation First:</strong> Validates decision improvements across thousands of synthetic trials before touching expensive physical hardware.</span>
-                  </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Bounded Task Interface:</strong> Issues discrete, capability-based commands (e.g., <code className="bg-white px-1 py-0.5 rounded font-mono text-[11px]">MOVE_TO</code>, <code className="bg-white px-1 py-0.5 rounded font-mono text-[11px]">GRASP</code>, <code className="bg-white px-1 py-0.5 rounded font-mono text-[11px]">RECOVER</code>).</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-[#8A8275]">Safety Isolation</span>
+                    <span className="text-[#15120E] font-semibold">100% Preserved Controller</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E8DFC8] flex items-center justify-between">
-                <span className="text-xs text-[#8A8275]">Deployment: Robot PC / Edge Box / Sim</span>
+              <div className="pt-6 sm:pt-10 mt-6 sm:mt-10 border-t border-[#E8DFC8] flex items-center justify-between">
+                <span className="text-[10px] sm:text-xs font-mono text-[#8A8275]">Available for Pilots</span>
                 <button
                   onClick={() => onOpenContact('software')}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#15120E] hover:text-[#B27F00] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#15120E] hover:text-[#D46215] transition-colors cursor-pointer"
                 >
-                  <span>Pilot Software</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Discuss Software Pilot</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D46215]" />
                 </button>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Product B: QRAEZEV Embedded */}
-          <div className="relative">
-            <div 
-              className="absolute inset-0 bg-[#E8DFC8] border border-[#D8D2C2] rounded-[6px_18px_8px_16px] rotate-1 translate-x-1 translate-y-2 pointer-events-none"
-              aria-hidden="true"
-            />
-            <div className="relative bg-[#FAF8F3] border-1.5 border-[#15120E] rounded-[5px_16px_6px_15px] p-8 sm:p-10 flex flex-col justify-between shadow-[3px_3px_0px_0px_#15120E] rotate-[0.7deg] hover:rotate-0 transition-transform h-full">
+          {/* Form 02: Embedded Module */}
+          <ScrollReveal delay={220} scaleFrom={0.91} blurFrom={16}>
+            <div className="h-full flex flex-col justify-between p-4 sm:p-10 lg:p-14 rounded-2xl sm:rounded-[36px] md:rounded-[42px] bg-[#15120E] text-[#F3F1EA] border border-[#2A241D] shadow-xl">
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#8A8275] bg-white px-2 py-0.5 rounded-[4px_2px_5px_2px] border border-[#E8DFC8]">
-                    Product B · Long-Term Physical Form
+                <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-white/10">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066]">
+                    Product B · Onboard Brain
                   </span>
-                  <span className="text-xs font-semibold text-[#15120E] bg-stone-200 px-2 py-0.5 rounded-[3px_5px_2px_4px]">
-                    Onboard Module
+                  <span className="text-[10px] sm:text-xs font-mono text-white/60 bg-white/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
+                    Dedicated Module
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-extrabold text-[#15120E] mb-2">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-[#FFA066] flex items-center justify-center mb-4 sm:mb-6">
+                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6" />
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4">
                   QRAEZEV Embedded
                 </h3>
-                <p className="text-sm text-[#443E37] leading-relaxed mb-6">
-                  The onboard physical embodiment of the cognitive runtime. A self-contained module with dedicated compute, transactional persistent storage, hardware security, and industrial I/O.
+
+                <p className="text-sm sm:text-base md:text-lg text-[#D8D2C2]/80 font-light leading-relaxed mb-6 sm:mb-10">
+                  A self-contained compute module inside the robot. Dedicated memory and robot I/O operating 100% locally without cloud dependency.
                 </p>
 
-                <div className="space-y-4 pt-4 border-t border-[#E8DFC8]">
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>100% Offline-First Operation:</strong> Zero cloud dependency for the real-time cognitive loop; operates reliably in air-gapped industrial cleanrooms.</span>
+                {/* 3 Clean Spec Points */}
+                <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 border-t border-white/10 text-xs sm:text-sm font-mono text-[#D8D2C2]/70">
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/40">Physical Location</span>
+                    <span className="text-white font-semibold">Internal Robot Chassis</span>
                   </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Transactional Persistent Storage:</strong> Memory traces survive power cutoffs, sudden brownouts, and unexpected machine reboots.</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/40">Network Dependency</span>
+                    <span className="text-white font-semibold">100% Offline-First</span>
                   </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Workload-Profiled Co-Design:</strong> Hardware engineered around actual measured CPU, NPU, memory bandwidth, and thermal margins.</span>
-                  </div>
-                  <div className="flex items-start gap-3 text-xs text-[#554E44]">
-                    <Check className="w-4 h-4 text-[#FFB800] shrink-0 mt-0.5" />
-                    <span><strong>Industrial Trust & Security:</strong> Secure boot, signed firmware updates, role-based authorization, and tamper-evident logs.</span>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/40">Memory Persistence</span>
+                    <span className="text-white font-semibold">Survives Power Loss</span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[#E8DFC8] flex items-center justify-between">
-                <span className="text-xs text-[#8A8275]">Deployment: Internal Robot Chassis Module</span>
+              <div className="pt-6 sm:pt-10 mt-6 sm:mt-10 border-t border-white/10 flex items-center justify-between">
+                <span className="text-[10px] sm:text-xs font-mono text-white/40">Hardware Co-Design</span>
                 <button
                   onClick={() => onOpenContact('embedded')}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#15120E] hover:text-[#B27F00] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066] hover:text-white transition-colors cursor-pointer"
                 >
-                  <span>Hardware Roadmap</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Hardware Blueprint</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFA066]" />
                 </button>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
         </div>
 
-        {/* Technical Architecture Comparison Table */}
-        <div className="bg-white border border-[#D8D2C2] rounded-md p-7 sm:p-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-4 border-b border-[#E8DFC8] gap-2 mb-4">
-            <div>
-              <h3 className="text-base font-bold text-[#15120E]">
-                Architectural Alignment Matrix
-              </h3>
-              <p className="text-xs text-[#6B6358]">Comparing QRAEZEV Software and QRAEZEV Embedded implementation details</p>
+        {/* The Co-Design Law: Spacious, High-Contrast Thesis */}
+        <ScrollReveal delay={150} scaleFrom={0.93} blurFrom={14}>
+          <div className="pt-10 sm:pt-16 md:pt-20 border-t border-[#D8D2C2] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 sm:gap-8">
+            <div className="max-w-xl">
+              <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#D46215] block mb-2">
+                Core Hardware Principle
+              </span>
+              <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-[#15120E] tracking-tight leading-snug">
+                &ldquo;Do not design custom hardware before understanding the actual computational workload.&rdquo;
+              </p>
             </div>
-            <span className="text-xs font-mono text-[#8A8275]">Specification Version 1.0</span>
-          </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-[#E8DFC8] text-[#8A8275]">
-                  <th className="py-2.5 font-medium">Dimension</th>
-                  <th className="py-2.5 font-medium text-[#15120E]">QRAEZEV Software</th>
-                  <th className="py-2.5 font-medium text-[#15120E]">QRAEZEV Embedded</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#F3F1EA]">
-                {comparisonItems.map((item) => (
-                  <tr key={item.dimension} className="hover:bg-[#FAF8F3]/60 transition-colors">
-                    <td className="py-4 font-semibold text-[#15120E] pr-4">{item.dimension}</td>
-                    <td className="py-4 text-[#554E44] pr-4">{item.software}</td>
-                    <td className="py-4 text-[#554E44]">{item.embedded}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs font-mono">
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full bg-white border border-[#D8D2C2] text-[#15120E] shadow-2xs font-semibold">
+                1. Software Runtime
+              </span>
+              <span className="text-[#8A8275]">→</span>
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full bg-white border border-[#D8D2C2] text-[#15120E] shadow-2xs font-semibold">
+                2. Workload Profiling
+              </span>
+              <span className="text-[#8A8275]">→</span>
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full bg-white border border-[#D8D2C2] text-[#15120E] shadow-2xs font-semibold">
+                3. Reference Prototype
+              </span>
+              <span className="text-[#8A8275]">→</span>
+              <span className="px-3 py-1.5 sm:px-4 sm:py-2.5 rounded-full bg-[#15120E] text-[#FFB800] font-bold">
+                4. Production Module
+              </span>
+            </div>
           </div>
-
-          <div className="mt-5 p-3.5 bg-[#FAF8F3] border border-[#E8DFC8] rounded text-xs text-[#6B6358] flex items-center justify-between flex-wrap gap-2">
-            <span><strong>Development Rule:</strong> Do not design custom hardware before profiling the software workload.</span>
-            <span className="font-mono text-[#15120E]">Software → Profiling → Reference Board → Prototype → Production</span>
-          </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

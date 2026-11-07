@@ -1,244 +1,292 @@
-import { AlertOctagon, RotateCw, Wrench, Clock, DollarSign, CheckCircle2 } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 export function ProblemSection() {
+  const realityBeats = [
+    {
+      num: '01',
+      tag: 'Memory Deficit',
+      metric: '0 Cycles',
+      title: 'Day 1,000 is still Day 1',
+      desc: 'Conventional robots retain zero operational memory. A 4 mm part variance causes the exact same mechanical fault on Day 1,000 as on Day 1.',
+      sub: 'Status Quo: Stateless Controllers',
+      subColor: 'text-[#E06D2D]',
+      stats: [
+        { label: 'Control Loop', value: 'Stateless Repeat' },
+        { label: 'Unrecovered Variance', value: 'Line Halts' },
+        { label: 'Retained Experience', value: '0 Cycles' },
+      ],
+    },
+    {
+      num: '02',
+      tag: 'Economic Drain',
+      metric: '50%+',
+      title: 'Integration & Downtime Burden',
+      desc: 'Integration and programming cost 4–5× the robot itself. When parts drift, machines freeze and require manual fixes.',
+      sub: 'Industry Burden: 4–5× Robot Cost',
+      subColor: 'text-[#E06D2D]',
+      stats: [
+        { label: 'Integration Share', value: '>50% Lifetime Cost' },
+        { label: 'Cell Cost Multiplier', value: '4–5× Hardware' },
+        { label: 'Reconfiguration', value: '1–4 Weeks' },
+      ],
+    },
+    {
+      num: '03',
+      tag: 'Scale Bottleneck',
+      metric: '600K+',
+      title: 'Zero Learning After Deployment',
+      desc: 'Over 600,000 robots are installed yearly. Seeing is solved with cameras, but every machine starts blank and learns nothing from failure.',
+      sub: 'Root Cause: No Experience Layer',
+      subColor: 'text-[#FFA066]',
+      stats: [
+        { label: 'Global Deployments', value: '600K+ / Year' },
+        { label: 'Cross-Cell Sharing', value: 'Isolated Silos' },
+        { label: 'Autonomy Ceiling', value: 'Rigid Routines' },
+      ],
+    },
+  ];
+
   return (
-    <section id="problem" className="py-24 md:py-32 relative">
-      <div className="site-container">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mb-20">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-3">
-            <span>01 · The Operational Reality</span>
-            <span aria-hidden="true" className="text-[#BAAF96]">·</span>
-            <span>The Memory Deficit</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#15120E] tracking-tight leading-tight text-balance">
-            Robots start from zero. Every single time.
+    <section id="problem" className="relative bg-[#F3F1EA] text-[#15120E] py-16 sm:py-32 md:py-48 lg:py-60 overflow-hidden">
+      
+      {/* 1. Section Header: Centered */}
+      <div className="site-container relative z-10 px-4 sm:px-8 max-w-5xl mx-auto">
+        <ScrollReveal scaleFrom={0.92} blurFrom={14} className="text-center max-w-3xl mx-auto mb-12 sm:mb-24 md:mb-36">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.04] sm:leading-[1.02] text-[#15120E]">
+            Robots start
+            <br />
+            from zero.
           </h2>
-          <p className="mt-4 text-lg text-[#443E37] leading-relaxed">
-            Industrial and collaborative robots are master repeaters under rigid constraints. But when real-world variation occurs—a part arrives 3mm off-center, friction shifts, or a grasp slips—today&apos;s robots lack persistent operational memory. Every recurring failure requires human intervention and manual engineering diagnosis.
+
+          <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl lg:text-2xl text-[#554E44] font-light leading-relaxed max-w-2xl mx-auto">
+            Industrial robots repeat fixed routines. Without persistent memory, every minor variance halts the line.
           </p>
-        </div>
+        </ScrollReveal>
+      </div>
 
-        {/* Visual Diagram: Day 1 vs Day 100 vs Day 1,000 */}
-        <div className="bg-[#FAF8F3] border border-[#D8D2C2] rounded-md p-7 md:p-9 mb-12 shadow-2xs">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-[#E8DFC8] gap-4">
-            <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#8A8275]">
-                Current Reality in Deployed Workcells
-              </span>
-              <h3 className="text-xl font-bold text-[#15120E] mt-0.5">
-                The Recurring Miss Trap
-              </h3>
-            </div>
-            <p className="text-xs text-[#6B6358] max-w-md">
-              Without an experience layer, a robot executing 100,000 cycles on Day 1,000 possesses no more insight into past failure modes than it did on Day 1.
-            </p>
-          </div>
+      {/* 2. 3 Blocks: First stretched to leftmost screen edge, 3rd stretched to rightmost screen edge */}
+      <div className="w-full relative z-10 space-y-6 sm:space-y-16 md:space-y-24 mb-16 sm:mb-32 md:mb-52">
+        {realityBeats.map((beat, idx) => {
+          const isFirst = idx === 0;
+          const isLast = idx === realityBeats.length - 1;
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-8">
-            {/* Day 1 */}
-            <div className="bg-white border-1.5 border-[#15120E]/40 rounded-[14px_4px_16px_5px] p-6 relative shadow-[2px_3px_0px_0px_rgba(21,18,14,0.1)] -rotate-1 hover:rotate-0 transition-transform">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-bold text-[#15120E]">Day 1</span>
-                <span className="text-[11px] font-mono text-[#8A8275] bg-[#FAF8F3] px-2 py-0.5 rounded-[4px_2px_5px_2px] border border-[#E8DFC8]">First Encounter</span>
-              </div>
-              <div className="h-16 flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-[#FFB800] ring-4 ring-[#FFB800]/30 shadow-xs" />
-              </div>
-              <div className="mt-4 pt-3 border-t border-[#F3F1EA] text-center">
-                <p className="text-xs font-semibold text-[#15120E]">1 failed attempt</p>
-                <p className="text-[11px] text-[#6B6358] mt-0.5">Part shifted 4mm; gripper jams</p>
-              </div>
-            </div>
+          // Full-length horizontal stretching across viewport
+          // On mobile, stretch cards maximally to both left and right edges
+          // Block 1 starts at x = 0 (left screen edge)
+          // Block 3 ends at x = 100vw (right screen edge)
+          // Block 2 is centered with matching grand width
+          const wrapperClass = isFirst
+            ? 'w-full flex justify-start'
+            : isLast
+            ? 'w-full flex justify-end'
+            : 'w-full flex justify-center px-1 sm:px-6';
 
-            {/* Day 100 */}
-            <div className="bg-white border-1.5 border-[#15120E]/40 rounded-[5px_15px_6px_14px] p-6 relative shadow-[3px_3px_0px_0px_rgba(21,18,14,0.1)] rotate-0.5 hover:rotate-0 transition-transform">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-bold text-[#15120E]">Day 100</span>
-                <span className="text-[11px] font-mono text-[#8A8275] bg-[#FAF8F3] px-2 py-0.5 rounded-[3px_5px_2px_4px] border border-[#E8DFC8]">100 Days Later</span>
-              </div>
-              <div className="h-16 flex items-center justify-center">
-                {/* Organically scattered gold dots suggesting repeated recorded physical strikes */}
-                <div className="flex flex-wrap gap-1.5 max-w-[140px] justify-center items-center">
-                  {[2.5, 3, 2.5, 3.2, 2.8, 3, 2.5, 3, 2.8].map((size, i) => (
-                    <div
-                      key={i}
-                      style={{ width: `${size * 3.2}px`, height: `${size * 3.2}px` }}
-                      className="rounded-full bg-[#FFB800] opacity-90"
-                    />
-                  ))}
+          const cardClass = isFirst
+            ? 'w-[calc(100vw-6px)] sm:w-[92vw] lg:w-[88vw] xl:w-[85vw] 2xl:w-[82vw] max-w-[1700px] rounded-r-2xl sm:rounded-r-[36px] md:rounded-r-[48px] rounded-l-none border-l-0 pl-4 sm:pl-12 md:pl-20 lg:pl-28 xl:pl-32 pr-4 sm:pr-12 md:pr-16 py-8 sm:py-14 md:py-18 lg:py-20'
+            : isLast
+            ? 'w-[calc(100vw-6px)] sm:w-[92vw] lg:w-[88vw] xl:w-[85vw] 2xl:w-[82vw] max-w-[1700px] rounded-l-2xl sm:rounded-l-[36px] md:rounded-l-[48px] rounded-r-none border-r-0 pr-4 sm:pr-12 md:pr-20 lg:pr-28 xl:pr-32 pl-4 sm:pl-12 md:pl-16 py-8 sm:py-14 md:py-18 lg:py-20'
+            : 'w-[calc(100vw-8px)] sm:w-[92vw] lg:w-[88vw] xl:w-[85vw] 2xl:w-[82vw] max-w-[1700px] rounded-2xl sm:rounded-[36px] md:rounded-[48px] px-4 sm:px-12 md:px-16 lg:px-20 py-8 sm:py-14 md:py-18 lg:py-20';
+
+          return (
+            <ScrollReveal key={beat.num} delay={idx * 120} scaleFrom={0.91} blurFrom={16} className="w-full">
+              <div className={wrapperClass}>
+                <div
+                  className={`relative overflow-hidden border border-[#2E2822] shadow-2xl transition-all group ${cardClass}`}
+                  style={{
+                    background: 'radial-gradient(130% 90% at 50% 110%, rgba(255, 184, 0, 0.22) 0%, rgba(35, 26, 16, 0.92) 55%, #12100D 100%)',
+                    backgroundColor: '#12100D',
+                  }}
+                >
+                  {/* Ambient Soft Glow on Hover */}
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[70%] h-[240px] bg-[#FFB800]/15 blur-[80px] rounded-full pointer-events-none group-hover:bg-[#FFB800]/25 transition-all duration-700" />
+
+                  {/* Header Row: Title & Metric */}
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-10 pb-6 sm:pb-10 border-b border-white/10">
+                    <div>
+                      <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
+                        <span className="text-[10px] sm:text-xs font-mono font-bold text-[#FFA066] uppercase tracking-wider">
+                          Reality {beat.num}
+                        </span>
+                        <span className="text-white/20">/</span>
+                        <span className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-white/50">
+                          {beat.tag}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        {beat.title}
+                      </h3>
+                    </div>
+
+                    {/* Giant High-Impact Number */}
+                    <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-[#FFA066] font-mono shrink-0 leading-none">
+                      {beat.metric}
+                    </div>
+                  </div>
+
+                  {/* Description & Subtitle */}
+                  <div className="relative z-10 pt-6 sm:pt-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 sm:gap-8">
+                    <p className="max-w-3xl text-sm sm:text-base md:text-lg lg:text-xl text-[#D8D2C2]/85 font-light leading-relaxed">
+                      {beat.desc}
+                    </p>
+                    <span className={`text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shrink-0 ${beat.subColor}`}>
+                      {beat.sub}
+                    </span>
+                  </div>
+
+                  {/* Operational Stats Strip */}
+                  <div className="relative z-10 mt-6 sm:mt-10 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {beat.stats.map((stat, sIdx) => (
+                      <div key={sIdx} className="bg-white/[0.03] border border-white/5 rounded-xl px-4 py-3">
+                        <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-white/40">
+                          {stat.label}
+                        </div>
+                        <div className="text-xs sm:text-sm font-mono font-semibold text-white/90 mt-1">
+                          {stat.value}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#F3F1EA] text-center">
-                <p className="text-xs font-semibold text-[#15120E]">The same miss, again</p>
-                <p className="text-[11px] text-[#6B6358] mt-0.5">Same orientation; line stopped</p>
-              </div>
-            </div>
+            </ScrollReveal>
+          );
+        })}
+      </div>
 
-            {/* Day 1,000 */}
-            <div className="bg-white border-1.5 border-[#15120E]/40 rounded-[12px_6px_15px_4px] p-6 relative shadow-[2.5px_3.5px_0px_0px_rgba(21,18,14,0.1)] -rotate-0.5 hover:rotate-0 transition-transform">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-bold text-[#15120E]">Day 1,000</span>
-                <span className="text-[11px] font-mono text-[#8A8275] bg-[#FAF8F3] px-2 py-0.5 rounded-[4px_2px_5px_3px] border border-[#E8DFC8]">Years of Operation</span>
-              </div>
-              <div className="h-16 flex items-center justify-center">
-                <div className="flex flex-wrap gap-1 max-w-[170px] justify-center items-center">
-                  {Array.from({ length: 24 }).map((_, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        width: `${7 + (i % 3)}px`,
-                        height: `${7 + (i % 3)}px`,
-                        transform: `translate(${(i % 4) - 2}px, ${(i % 3) - 1}px)`,
-                      }}
-                      className="rounded-full bg-[#FFB800]"
-                    />
-                  ))}
+      {/* 3. Ultra-Spacious, Low-Text Failure Loop vs Memory Loop Comparison */}
+      <div className="site-container relative z-10 px-1.5 sm:px-8 max-w-5xl mx-auto">
+        <div>
+          <ScrollReveal scaleFrom={0.92} blurFrom={14} className="text-center max-w-3xl mx-auto mb-10 sm:mb-20 md:mb-28">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#D46215] block mb-2 sm:mb-4">
+              The Divergence
+            </span>
+            <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#15120E] tracking-tight leading-tight">
+              Failure Loop vs. Memory Flywheel
+            </h3>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 lg:gap-14">
+            
+            {/* Card A: Stateless Failure Loop (Clean, Spacious, Minimal) */}
+            <ScrollReveal delay={100} scaleFrom={0.91} blurFrom={16}>
+              <div
+                className="h-full rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 lg:p-14 border border-[#2E241E] shadow-xl flex flex-col justify-between"
+                style={{
+                  backgroundColor: '#110F0E',
+                  backgroundImage: 'radial-gradient(120% 80% at 50% 120%, rgba(220, 80, 80, 0.12) 0%, rgba(20, 16, 15, 0.95) 60%, #110F0E 100%)',
+                }}
+              >
+                <div>
+                  <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-white/10">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#E06D6D]">
+                      Without Memory
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-mono text-white/40">
+                      Stateless Controller
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-snug mb-6 sm:mb-12">
+                    Every failure stops the line.
+                  </h4>
+
+                  {/* 3 Ultra-Clean Steps */}
+                  <div className="space-y-4 sm:space-y-8">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">01</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Part sits 4 mm off-center</div>
+                        <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Controller pushes straight and jams.</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">02</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Line halts</div>
+                        <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Technician manually clears the cell.</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">03</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Repeats next shift</div>
+                        <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Zero memory kept; exact failure repeats.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 sm:mt-14 pt-4 sm:pt-6 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[10px] sm:text-xs font-mono uppercase text-white/40">Status Quo:</span>
+                  <span className="text-xs sm:text-sm font-mono font-bold text-[#E06D6D]">Recurring Line Downtime</span>
                 </div>
               </div>
-              <div className="mt-4 pt-3 border-t border-[#F3F1EA] text-center">
-                <p className="text-xs font-semibold text-[#15120E]">Still the same miss</p>
-                <p className="text-[11px] text-[#6B6358] mt-0.5">Zero operational memory retained</p>
-              </div>
-            </div>
-          </div>
+            </ScrollReveal>
 
-          <div className="mt-6 pt-4 border-t border-[#E8DFC8] flex items-center justify-between text-xs text-[#8A8275]">
-            <span className="italic">Visual reference from QRAEZEV engineering brief. Each gold mark represents an unrecovered physical failure.</span>
-            <span className="font-mono text-[#15120E] font-medium">Memory is absent; reprogramming is recurring.</span>
-          </div>
-        </div>
+            {/* Card B: QRAEZEV Memory Flywheel (Glowing Amber, Ultra-Spacious) */}
+            <ScrollReveal delay={220} scaleFrom={0.91} blurFrom={16}>
+              <div
+                className="h-full relative rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 lg:p-14 border border-[#FFB800]/40 shadow-2xl flex flex-col justify-between overflow-hidden group"
+                style={{
+                  backgroundColor: '#141210',
+                  backgroundImage: 'radial-gradient(130% 85% at 50% 115%, rgba(255, 184, 0, 0.32) 0%, rgba(210, 105, 30, 0.22) 40%, rgba(25, 20, 16, 0.95) 75%, #141210 100%)',
+                }}
+              >
+                {/* Warm Ambient Internal Light Glow */}
+                <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-[90%] h-[240px] bg-[#FFB800]/20 blur-[90px] rounded-full pointer-events-none group-hover:bg-[#FFB800]/30 transition-all duration-700" />
 
-        {/* The Two Workflows: Legacy Reprogramming vs Experience-Informed with Asymmetric Angles */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
-          
-          {/* Workflow A: Current Status Quo */}
-          <div className="bg-white border-1.5 border-[#15120E]/30 rounded-[14px_5px_16px_6px] p-7 sm:p-8 relative shadow-[3px_3px_0px_0px_rgba(21,18,14,0.06)] -rotate-[0.4deg] hover:rotate-0 transition-transform">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-[#F3F1EA]">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#A63232] flex items-center gap-1.5">
-                <AlertOctagon className="w-3.5 h-3.5" />
-                Current Workflow · Status Quo
-              </span>
-              <span className="text-[11px] font-mono text-[#8A8275] bg-[#FAF8F3] px-2 py-0.5 rounded-[3px_5px_2px_4px] border border-[#E8DFC8]">High Overhead</span>
-            </div>
-            <p className="text-sm text-[#443E37] mb-6">
-              When an unexpected failure occurs in production today, the burden falls on engineering intervention:
-            </p>
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-[#FFB800]/20">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066]">
+                      With QRAEZEV
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-mono text-[#FFB800] bg-[#FFB800]/10 px-2.5 py-0.5 rounded-full border border-[#FFB800]/30">
+                      Adaptive Loop
+                    </span>
+                  </div>
 
-            <div className="space-y-4 relative">
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[6px_3px_7px_3px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-stone-200 text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">1</div>
-                <div><span className="font-semibold text-[#15120E]">Robot attempt fails</span> on environmental variance</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[4px_7px_3px_6px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-stone-200 text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">2</div>
-                <div><span className="font-semibold text-[#15120E]">Line halts</span>; human operator intervenes to clear jam</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[7px_3px_6px_4px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-stone-200 text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">3</div>
-                <div><span className="font-semibold text-[#15120E]">Automation engineer</span> diagnoses error logs manually</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[5px_6px_3px_7px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-stone-200 text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">4</div>
-                <div><span className="font-semibold text-[#15120E]">Robot program rewritten</span> or policy fine-tuned offline</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[7px_3px_6px_4px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-stone-200 text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">5</div>
-                <div><span className="font-semibold text-[#15120E]">Commissioning & retesting</span> before line reopens</div>
-              </div>
-            </div>
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-snug mb-6 sm:mb-12">
+                    Every failure builds memory.
+                  </h4>
 
-            <div className="mt-5 text-[11px] text-[#A63232] bg-[#FDF2F2] p-2 rounded-[4px_6px_3px_5px] border border-[#F5C2C2]">
-              Result: Days to weeks of engineering overhead per new variation.
-            </div>
-          </div>
+                  {/* 3 Ultra-Clean Steps */}
+                  <div className="space-y-4 sm:space-y-8">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">01</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Detects variance</div>
+                        <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Perceives 4 mm offset and resistance.</div>
+                      </div>
+                    </div>
 
-          {/* Workflow B: QRAEZEV Experience Loop */}
-          <div className="bg-white border-2 border-[#15120E] rounded-[6px_16px_5px_15px] p-7 sm:p-8 relative shadow-[4px_4px_0px_0px_#FFB800] rotate-[0.5deg] hover:rotate-0 transition-transform">
-            <div className="flex items-center justify-between mb-4 pb-2 border-b border-[#F3F1EA]">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#15120E] flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#FFB800]" />
-                QRAEZEV Hypothesis · Experience Loop
-              </span>
-              <span className="text-[11px] font-semibold text-[#15120E] bg-[#FFB800] px-2 py-0.5 rounded-[3px_5px_2px_4px]">Autonomous</span>
-            </div>
-            <p className="text-sm text-[#443E37] mb-6">
-              Persistent, outcome-linked memory allows the robot to adapt locally without rewriting control policies:
-            </p>
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">02</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Recalls prior fix</div>
+                        <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Past push jammed; offsets 4 mm first.</div>
+                      </div>
+                    </div>
 
-            <div className="space-y-4 relative">
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[5px_4px_6px_3px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-[#FFB800] text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">1</div>
-                <div><span className="font-semibold text-[#15120E]">Robot attempt encounters unexpected outcome</span></div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[4px_6px_3px_5px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-[#FFB800] text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">2</div>
-                <div><span className="font-semibold text-[#15120E]">QRAEZEV recalls relevant past episodes</span> & failure modes</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[6px_3px_5px_4px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-[#FFB800] text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">3</div>
-                <div><span className="font-semibold text-[#15120E]">Reasons over bounded alternatives</span> (offset, approach velocity)</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[3px_6px_4px_5px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-[#FFB800] text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">4</div>
-                <div><span className="font-semibold text-[#15120E]">Executes adapted action</span> via existing controller & safety guard</div>
-              </div>
-              <div className="flex items-center gap-3 text-xs p-2.5 rounded-[5px_3px_6px_4px] bg-[#FAF8F3] border border-[#E8DFC8]">
-                <div className="w-6 h-6 rounded-full bg-[#FFB800] text-[#15120E] font-mono font-bold flex items-center justify-center shrink-0">5</div>
-                <div><span className="font-semibold text-[#15120E]">Evaluates outcome & consolidates</span> memory for all future trials</div>
-              </div>
-            </div>
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">03</span>
+                      <div>
+                        <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Adapts and finishes</div>
+                        <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Completes task; records successful move.</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-            <div className="mt-5 text-[11px] text-[#15120E] bg-[#FFF8E7] p-2 rounded-[4px_6px_3px_5px] border border-[#FFD875] font-medium">
-              Target: Reduce repeated manipulation trial failures by up to 50% in simulation & controlled testbeds.
-            </div>
-          </div>
-
-        </div>
-
-        {/* Quantified Economics Strip (Verified from Source Deck Slide 3 & 5) */}
-        <div className="border border-[#D8D2C2] bg-white rounded-md p-7 sm:p-10">
-          <div className="text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-5">
-            Verified Industry Cost Factors · Source: Robotics Integration & Manufacturing Surveys
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="border-b md:border-b-0 md:border-r border-[#E8DFC8] pb-6 md:pb-0 md:pr-6">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#15120E] font-mono tabular-nums">
-                50%+
+                <div className="relative z-10 mt-8 sm:mt-14 pt-4 sm:pt-6 border-t border-[#FFB800]/20 flex items-center justify-between">
+                  <span className="text-[10px] sm:text-xs font-mono uppercase text-[#D8D2C2]/60">Target:</span>
+                  <span className="text-xs sm:text-sm font-mono font-bold text-[#FFB800]">50% Fewer Failed Trials</span>
+                </div>
               </div>
-              <p className="mt-2 text-sm font-semibold text-[#15120E]">
-                Integration & Reprogramming Share
-              </p>
-              <p className="mt-1 text-xs text-[#6B6358] leading-relaxed">
-                More than half of a robot system&apos;s lifetime expenditure is software integration, reconfiguration, and debugging—not the physical arm.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="border-b md:border-b-0 md:border-r border-[#E8DFC8] pb-6 md:pb-0 md:pr-6">
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#15120E] font-mono tabular-nums">
-                4–5×
-              </div>
-              <p className="mt-2 text-sm font-semibold text-[#15120E]">
-                Total System Multiplier
-              </p>
-              <p className="mt-1 text-xs text-[#6B6358] leading-relaxed">
-                A fully deployed robotic workcell typically costs 4 to 5 times the purchase price of the bare robotic arm itself due to setup overhead.
-              </p>
-            </div>
-
-            <div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-[#15120E] font-mono tabular-nums">
-                73%
-              </div>
-              <p className="mt-2 text-sm font-semibold text-[#15120E]">
-                Lengthy Commissioning Cycles
-              </p>
-              <p className="mt-1 text-xs text-[#6B6358] leading-relaxed">
-                73% of surveyed manufacturers state that reprogramming a robot for minor product or fixture variants takes anywhere from a full week to a month.
-              </p>
-            </div>
           </div>
         </div>
 

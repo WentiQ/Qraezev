@@ -136,15 +136,16 @@ export function NeuralField() {
       canvas.height = Math.round(height * pixelRatio);
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-      const spacing = width < 380 ? 21 : 17;
+      const spacing = width < 380 ? 18 : 15;
       particles = [];
       for (let y = spacing / 2; y < height; y += spacing) {
         for (let x = spacing / 2; x < width; x += spacing) {
           particles.push({
-            x: x + (Math.random() - 0.5) * 5,
-            y: y + (Math.random() - 0.5) * 5,
+            x: x + (Math.random() - 0.5) * 3,
+            y: y + (Math.random() - 0.5) * 3,
             phase: Math.random() * Math.PI * 2,
-            size: 1.1 + Math.random() * 0.7,
+            // Decreased particle size for refined, delicate appearance
+            size: 0.72 + Math.random() * 0.48,
           });
         }
       }
@@ -155,15 +156,14 @@ export function NeuralField() {
       if (width === 0 || height === 0) return;
       context.clearRect(0, 0, width, height);
       const nodes = neurons();
-      const isMobileLayout = width < 768;
-      const sources = nodes.map((point) => ({ ...point, radius: 102, strength: 0.9 }));
+      const sources = nodes.map((point) => ({ ...point, radius: 110, strength: 0.95 }));
       if (activePointer) {
-        sources.push({ ...activePointer, radius: 132, strength: 1.8 });
+        sources.push({ ...activePointer, radius: 140, strength: 1.9 });
       }
 
       for (const particle of particles) {
-        let offsetX = Math.sin(time * 0.00045 + particle.phase) * 0.8;
-        let offsetY = Math.cos(time * 0.0004 + particle.phase) * 0.8;
+        let offsetX = Math.sin(time * 0.00045 + particle.phase) * 0.9;
+        let offsetY = Math.cos(time * 0.0004 + particle.phase) * 0.9;
         let influence = 0;
 
         for (const source of sources) {
@@ -171,8 +171,8 @@ export function NeuralField() {
           const dy = source.y - particle.y;
           const distance = Math.max(1, Math.hypot(dx, dy));
           const pull = source.strength * Math.exp(-(distance * distance) / (2 * source.radius * source.radius));
-          offsetX += (dx / distance) * pull * 27;
-          offsetY += (dy / distance) * pull * 27;
+          offsetX += (dx / distance) * pull * 28;
+          offsetY += (dy / distance) * pull * 28;
           influence = Math.max(influence, pull);
         }
 
@@ -185,25 +185,25 @@ export function NeuralField() {
         const dislocation = Math.hypot(offsetX, offsetY);
         const x = particle.x + offsetX;
         const y = particle.y + offsetY;
-        const radius = particle.size * (1 + Math.min(influence, 1) * 0.45);
-        const colorMix = Math.min(1, influence * 0.9 + Math.max(0, dislocation - 4) / 52);
-        const red = Math.round(85 + (255 - 85) * colorMix);
-        const green = Math.round(78 + (184 - 78) * colorMix);
-        const blue = Math.round(68 + (0 - 68) * colorMix);
+        // Refined radius formula with smaller scaling
+        const radius = particle.size * (1 + Math.min(influence, 1) * 0.35);
+        const colorMix = Math.min(1, influence * 0.9 + Math.max(0, dislocation - 4) / 50);
+        const red = Math.round(90 + (255 - 90) * colorMix);
+        const green = Math.round(82 + (184 - 82) * colorMix);
+        const blue = Math.round(72 + (0 - 72) * colorMix);
         const edgeFade = Math.min(
           1,
-          x / (width * 0.12),
-          (width - x) / (width * 0.12),
-          y / (height * 0.15),
-          (height - y) / (height * 0.15),
+          x / (width * 0.08),
+          (width - x) / (width * 0.08),
+          y / (height * 0.1),
+          (height - y) / (height * 0.1),
         );
+        
         const textDistance = distanceFromText(x, y);
-        const contentHalo = smoothStep(8, 140, textDistance) * 0.4;
-        const broadFade = isMobileLayout
-          ? smoothStep(80, height * 0.44, textDistance)
-          : smoothStep(120, width * 0.48, textDistance);
-        const reveal = Math.max(contentHalo, broadFade);
-        const alpha = 0.68 * Math.max(0, edgeFade) * reveal;
+        // Softly attenuate directly behind text letters for pristine legibility
+        const textSoftness = 0.25 + 0.75 * smoothStep(10, 70, textDistance);
+        const alpha = 0.7 * Math.max(0, edgeFade) * textSoftness;
+        
         context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 
         context.beginPath();
@@ -212,7 +212,7 @@ export function NeuralField() {
       }
 
       for (const node of nodes) {
-        if (smoothStep(8, 60, distanceFromText(node.x, node.y)) < 0.05) {
+        if (distanceFromText(node.x, node.y) < 40) {
           continue;
         }
 
@@ -223,50 +223,47 @@ export function NeuralField() {
         const pulse = reducedMotion ? 0 : Math.sin(time * 0.0015 + node.x) * 0.8;
 
         context.beginPath();
-        context.arc(node.x, node.y, 8 + active * 3 + pulse, 0, Math.PI * 2);
-        context.fillStyle = `rgba(255, 184, 0, ${0.08 + active * 0.14})`;
+        context.arc(node.x, node.y, 6.5 + active * 2.5 + pulse, 0, Math.PI * 2);
+        context.fillStyle = `rgba(255, 184, 0, ${0.1 + active * 0.16})`;
         context.fill();
 
         context.beginPath();
-        context.arc(node.x, node.y, 3.1 + active * 1.1, 0, Math.PI * 2);
-        context.fillStyle = `rgba(255, 184, 0, ${0.62 + active * 0.38})`;
+        context.arc(node.x, node.y, 2.5 + active * 0.9, 0, Math.PI * 2);
+        context.fillStyle = `rgba(255, 184, 0, ${0.7 + active * 0.3})`;
         context.fill();
         context.beginPath();
-        context.arc(node.x, node.y, 1.1, 0, Math.PI * 2);
+        context.arc(node.x, node.y, 0.9, 0, Math.PI * 2);
         context.fillStyle = '#FFF8E5';
         context.fill();
       }
 
       if (activePointer) {
         context.beginPath();
-        context.arc(activePointer.x, activePointer.y, 11, 0, Math.PI * 2);
-        context.fillStyle = 'rgba(255, 184, 0, 0.12)';
+        context.arc(activePointer.x, activePointer.y, 10, 0, Math.PI * 2);
+        context.fillStyle = 'rgba(255, 184, 0, 0.14)';
         context.fill();
         context.beginPath();
-        context.arc(activePointer.x, activePointer.y, 3.5, 0, Math.PI * 2);
+        context.arc(activePointer.x, activePointer.y, 2.8, 0, Math.PI * 2);
         context.fillStyle = '#FFB800';
         context.fill();
       }
     };
 
+    const animate = (time: number) => {
+      draw(time);
+      frame = window.requestAnimationFrame(animate);
+    };
+
     const handlePointerMove = (event: PointerEvent) => {
-      const bounds = canvas.getBoundingClientRect();
-      const isInside = event.clientX >= bounds.left && event.clientX <= bounds.right
-        && event.clientY >= bounds.top && event.clientY <= bounds.bottom;
-      activePointer = isInside
-        ? { x: event.clientX - bounds.left, y: event.clientY - bounds.top }
-        : null;
-      if (reducedMotion) draw(performance.now());
+      const bounds = container.getBoundingClientRect();
+      activePointer = {
+        x: event.clientX - bounds.left,
+        y: event.clientY - bounds.top,
+      };
     };
 
     const handlePointerLeave = () => {
       activePointer = null;
-      if (reducedMotion) draw(performance.now());
-    };
-
-    const animate = (time: number) => {
-      draw(time);
-      if (!reducedMotion) frame = window.requestAnimationFrame(animate);
     };
 
     const observer = new ResizeObserver(resize);
@@ -287,9 +284,14 @@ export function NeuralField() {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none absolute inset-0 z-0"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
     >
-      <canvas ref={canvasRef} aria-hidden="true" className="absolute inset-0 h-full w-full" />
+      {/* Soft optical blur filter on the canvas */}
+      <canvas 
+        ref={canvasRef} 
+        aria-hidden="true" 
+        className="absolute inset-0 h-full w-full blur-[0.7px]" 
+      />
     </div>
   );
 }

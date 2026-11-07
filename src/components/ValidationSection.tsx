@@ -1,249 +1,118 @@
-import { useState } from 'react';
-import { Scale, CheckCircle2, FlaskConical, Target, BarChart2, ShieldCheck } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 export function ValidationSection() {
-  const [selectedTask, setSelectedTask] = useState<'peg' | 'cable' | 'sorter'>('peg');
-
-  const benchmarkTasks = {
-    peg: {
-      name: 'Precision Peg-in-Hole Insertion',
-      variation: '±4mm horizontal positional shift, 0.5° angular tilt, variable friction',
-      baselineFailure: '80% repeated jam rate (fails 8 out of 10 times without human reset)',
-      qraezevTarget: '50% reduction in failed trials (adapts lateral offset by Trial 2)',
-      dieFormula: 'DIE = P(success | experience) - P(success | baseline) = +0.50 target',
-      primarySensor: 'Wrist-mounted F/T + eye-in-hand RGB-D',
-    },
-    cable: {
-      name: 'Flexible Harness Routing',
-      variation: 'Non-rigid deformation, spring-back tension, variable clasp grip',
-      baselineFailure: 'High slip rate; unable to predict elastic counter-torque',
-      qraezevTarget: 'Recalls tension compensation angle from past deformation episodes',
-      dieFormula: 'DIE = +0.42 recovery improvement across unmodeled flex variations',
-      primarySensor: 'Joint effort telemetry + tactile array',
-    },
-    sorter: {
-      name: 'Irregular Surface Bin Sorting',
-      variation: 'Reflective packaging, random orientations, overlap occlusion',
-      baselineFailure: 'Repeated suction failure on wrinkled foil surfaces',
-      qraezevTarget: 'Recalls alternative grasp angles proven on identical SKU reflections',
-      dieFormula: 'DIE = +0.55 first-pass pickup yield after initial slip episode',
-      primarySensor: 'Overhead 3D point-cloud + vacuum differential gauge',
-    },
-  };
-
   const principles = [
     {
       num: '01',
-      title: 'Interface Before Intelligence',
-      desc: 'Canonical state, action schemas, and safety contracts are defined and frozen before integrating complex cognitive models.',
+      title: 'Interface First',
+      tag: 'Stage 0',
+      desc: 'Freeze robot state and action schemas before introducing complex learning models.',
+      metric: 'Stable Robot-Agnostic Core',
     },
     {
       num: '02',
-      title: 'Simulation Before Physical Deployment',
-      desc: 'Every memory hypothesis must demonstrate repeatable decision gains in high-throughput deterministic simulation before touching real hardware.',
+      title: 'Simulation First',
+      tag: 'Stage 1',
+      desc: 'Prove repeatable performance gains in simulation before testing on physical robots.',
+      metric: 'Deterministic Benchmarks',
     },
     {
       num: '03',
-      title: 'Measurement Before Claims',
-      desc: 'We never claim a system is "learning" merely because it archives data. Learning requires statistically proven decision improvement over a matched baseline.',
-    },
-    {
-      num: '04',
-      title: 'Memory Before Scale',
-      desc: 'Our initial research wedge focuses on experience structuring, retrieval precision, and consolidation—not training ever-larger brute-force models.',
-    },
-    {
-      num: '05',
-      title: 'Safety Outside the Model',
-      desc: 'The safety envelope is deterministic and independent. A hallucinating or delayed cognitive model can never violate physical machine limits.',
-    },
-    {
-      num: '06',
-      title: 'Embodiment Agnosticism',
-      desc: 'The cognitive core remains completely isolated from robot-specific kinematics. Integrating a new arm requires an adapter, not a rewrite.',
+      title: 'Memory Over Scale',
+      tag: 'Stage 2',
+      desc: 'Improve decisions through structured experience and retrieval, not giant model size.',
+      metric: 'Ablation Against Baseline',
     },
   ];
 
   return (
-    <section id="validation" className="py-24 md:py-32 border-t border-[#D8D2C2]/70 relative">
-      <div className="site-container">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mb-20">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-3">
-            <span>05 · Empirical Rigor</span>
-            <span aria-hidden="true" className="text-[#BAAF96]">·</span>
-            <span>Scientific Principles & Validation</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#15120E] tracking-tight leading-tight text-balance">
-            Hypothesis first.
-            <br />
-            Measured against a no-memory baseline.
-          </h2>
-          <p className="mt-4 text-lg text-[#443E37] leading-relaxed">
-            QRAEZEV does not rely on marketing claims or cherry-picked robotics demonstrations. We measure every innovation against an identical no-memory control system under strictly matched physical and computational conditions.
-          </p>
-        </div>
+    <section id="validation" className="relative bg-[#F3F1EA] text-[#15120E] pb-16 sm:pb-32 md:pb-48 lg:pb-60 overflow-hidden">
+      
+      {/* 1. Deep Seamless Transition from previous solid dark #15120E into #F3F1EA */}
+      <div
+        className="w-full h-28 sm:h-56 md:h-72 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, #15120E 0%, rgba(21, 18, 14, 0.88) 25%, rgba(243, 241, 234, 0.45) 80%, #F3F1EA 100%)',
+        }}
+      />
 
-        {/* 6 Research Principles Grid with Alternating Tilts and Organic Radii */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {principles.map((item, idx) => {
-            const tilts = ['-rotate-[0.5deg]', 'rotate-[0.6deg]', '-rotate-[0.4deg]', 'rotate-[0.4deg]', '-rotate-[0.6deg]', 'rotate-[0.5deg]'];
-            const radii = [
-              'rounded-[14px_4px_16px_5px]',
-              'rounded-[5px_15px_6px_14px]',
-              'rounded-[12px_5px_15px_4px]',
-              'rounded-[6px_14px_5px_16px]',
-              'rounded-[15px_6px_14px_5px]',
-              'rounded-[4px_16px_5px_14px]',
-            ];
-            return (
-              <div 
-                key={item.num} 
-                className={`bg-white border-1.5 border-[#15120E]/35 ${radii[idx]} ${tilts[idx]} hover:rotate-0 p-7 flex flex-col justify-between shadow-[2px_3px_0px_0px_rgba(21,18,14,0.08)] transition-all`}
+      <div className="site-container relative z-10 px-1.5 sm:px-8 max-w-6xl mx-auto pt-10 sm:pt-20 md:pt-28">
+        
+        {/* Section Header: Expansive Negative Space & Monumental Typography */}
+        <ScrollReveal scaleFrom={0.92} blurFrom={14} className="text-center max-w-3xl mx-auto mb-12 sm:mb-24 md:mb-36">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.04] sm:leading-[1.02] text-[#15120E]">
+            Measurement first.
+            <br />
+            <span className="text-[#8A8275] font-light">Proof second.</span>
+          </h2>
+
+          <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl lg:text-2xl text-[#554E44] font-light leading-relaxed max-w-2xl mx-auto">
+            Storing data is not learning. Real learning requires measured improvement over an identical robot without memory.
+          </p>
+        </ScrollReveal>
+
+        {/* The Controlled Memory Proof Benchmark Box (NO FORMULAS) */}
+        <ScrollReveal delay={120} scaleFrom={0.91} blurFrom={16} className="max-w-4xl mx-auto mb-12 sm:mb-24 md:mb-44">
+          <div
+            className="rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 md:p-16 border border-[#2E241E] shadow-2xl relative overflow-hidden text-center"
+            style={{
+              backgroundColor: '#141210',
+              backgroundImage: 'radial-gradient(130% 90% at 50% 115%, rgba(255, 184, 0, 0.28) 0%, rgba(210, 105, 30, 0.18) 45%, rgba(20, 16, 14, 0.95) 75%, #141210 100%)',
+            }}
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#FFA066] mb-5 sm:mb-8">
+              <span>Controlled Empirical Benchmark</span>
+            </div>
+
+            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-mono text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#FFA066] tracking-tight mb-4 sm:mb-6">
+              50% Fewer Failed Trials
+            </div>
+
+            <div className="text-xs sm:text-base font-mono text-white/70 max-w-xl mx-auto mb-6 sm:mb-10 font-light">
+              Testing identical robots on the same task: one with memory, one without. Target to be proven in simulation first.
+            </div>
+
+            <div className="pt-5 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs font-mono text-white/50 max-w-2xl mx-auto">
+              <span>Baseline: Matched Robot &amp; Task</span>
+              <span className="text-[#FFA066] font-bold">Goal: Faster Recovery</span>
+              <span>Sequence: Simulation → Physical MVP</span>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* 3 Scientific Principles: Spacious, Open Triptych (No Hidden Tabs, Zero Congestion) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+          {principles.map((p, idx) => (
+            <ScrollReveal key={p.num} delay={idx * 120} scaleFrom={0.92} blurFrom={14}>
+              <div
+                className="h-full p-4 sm:p-8 lg:p-12 rounded-2xl sm:rounded-[36px] md:rounded-[42px] bg-white border border-[#D8D2C2] shadow-sm flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#8A8275] block mb-2">
-                    Principle {item.num}
-                  </span>
-                  <h3 className="text-base font-bold text-[#15120E] mb-2">{item.title}</h3>
-                  <p className="text-xs text-[#554E44] leading-relaxed">{item.desc}</p>
+                  <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-[#E8DFC8]">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold text-[#D46215]">
+                      Principle {p.num}
+                    </span>
+                    <span className="text-[10px] sm:text-xs font-mono text-[#8A8275]">
+                      {p.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-2xl font-bold text-[#15120E] tracking-tight mb-3 sm:mb-4">
+                    {p.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm md:text-base text-[#554E44] font-light leading-relaxed mb-6 sm:mb-8">
+                    {p.desc}
+                  </p>
+                </div>
+
+                <div className="pt-4 sm:pt-6 border-t border-[#E8DFC8] text-[11px] sm:text-xs font-mono text-[#8A8275]">
+                  <span className="block mb-1 text-[#15120E] font-semibold">Standard:</span>
+                  <span>{p.metric}</span>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* The Core PMF Experiment: Controlled Comparison Box */}
-        <div className="bg-[#FAF8F3] border border-[#D8D2C2] rounded-md p-8 sm:p-10 mb-20 shadow-2xs">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-[#E8DFC8] gap-4 mb-8">
-            <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#8A8275]">
-                Core Scientific Evaluation Framework
-              </span>
-              <h3 className="text-xl font-bold text-[#15120E]">
-                The Controlled Comparison Experiment
-              </h3>
-            </div>
-            <div className="px-3 py-1.5 bg-white border-1.5 border-[#15120E] rounded-[4px_8px_3px_7px] font-mono text-xs font-bold text-[#15120E] shadow-[2px_2px_0px_0px_#FFB800] -rotate-1">
-              DIE = P(success | experience) − P(success | no experience)
-            </div>
-          </div>
-
-          {/* Side by Side Experimental Setup with Asymmetric Inclinations */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
-            
-            {/* Left: Control Baseline */}
-            <div className="bg-white border-1.5 border-[#15120E]/30 rounded-[14px_5px_16px_6px] p-7 relative shadow-[3px_3px_0px_0px_rgba(21,18,14,0.06)] -rotate-[0.4deg] hover:rotate-0 transition-transform">
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#F3F1EA]">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#6B6358]">
-                  Control: Identical Robot Without QRAEZEV
-                </span>
-                <span className="text-[11px] font-mono text-[#8A8275] bg-[#FAF8F3] px-2 py-0.5 rounded border border-[#E8DFC8]">Baseline</span>
-              </div>
-              <ul className="space-y-2 text-xs text-[#554E44]">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
-                  Same mechanical arm, sensors, and lighting environment
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
-                  Same compute budget and underlying perception pipeline
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
-                  No persistent operational memory between trials
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
-                  Repeated encounters with identical variance cause repeated jams
-                </li>
-              </ul>
-            </div>
-
-            {/* Right: Treatment Group */}
-            <div className="bg-white border-2 border-[#15120E] rounded-[6px_16px_5px_15px] p-7 relative shadow-[4px_4px_0px_0px_#FFB800] rotate-[0.5deg] hover:rotate-0 transition-transform">
-              <div className="flex items-center justify-between mb-3 pb-2 border-b border-[#F3F1EA]">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#15120E]">
-                  Treatment: Identical Robot With QRAEZEV
-                </span>
-                <span className="text-[11px] font-mono text-[#15120E] bg-[#FFB800] px-2 py-0.5 rounded-[3px_5px_2px_4px]">
-                  Memory-Enabled
-                </span>
-              </div>
-              <ul className="space-y-2 text-xs text-[#554E44]">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                  Same mechanical arm, sensors, and lighting environment
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                  Active episodic memory retrieval and causal attribution
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                  Adapts task parameters (offset, speed, angle) after first failure
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
-                  Proven reduction in human operator intervention frequency
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          {/* Interactive Benchmark Tasks Inspector */}
-          <div className="border border-[#E8DFC8] bg-white rounded-md p-6 sm:p-8">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-5">
-              <span className="text-xs font-bold text-[#15120E] uppercase tracking-wider">
-                Select Benchmark Task Scenario:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {(['peg', 'cable', 'sorter'] as const).map((key) => (
-                  <button
-                    key={key}
-                    onClick={() => setSelectedTask(key)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded transition-colors whitespace-nowrap ${
-                      selectedTask === key
-                        ? 'bg-[#15120E] text-white shadow-2xs'
-                        : 'bg-[#FAF8F3] text-[#6B6358] border border-[#E8DFC8] hover:text-[#15120E]'
-                    }`}
-                  >
-                    {benchmarkTasks[key].name.split(' ')[0]} {benchmarkTasks[key].name.split(' ')[1]}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 pt-5 border-t border-[#F3F1EA] text-xs">
-              <div>
-                <span className="text-[11px] font-mono text-[#8A8275] block uppercase">Task Description</span>
-                <p className="font-bold text-[#15120E] mt-0.5">{benchmarkTasks[selectedTask].name}</p>
-                <p className="text-[#554E44] mt-1">{benchmarkTasks[selectedTask].variation}</p>
-                <p className="text-[11px] text-[#8A8275] mt-2">Sensors: {benchmarkTasks[selectedTask].primarySensor}</p>
-              </div>
-
-              <div className="bg-[#FAF8F3] p-4 rounded border border-[#E8DFC8] space-y-2">
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-[#A63232] font-bold">No-Memory Baseline:</span>
-                  <p className="text-[#554E44] text-[11px]">{benchmarkTasks[selectedTask].baselineFailure}</p>
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-[#15120E] font-bold">QRAEZEV Target Metric:</span>
-                  <p className="text-[#15120E] font-semibold text-[11px]">{benchmarkTasks[selectedTask].qraezevTarget}</p>
-                </div>
-                <div className="pt-2 border-t border-[#E8DFC8] font-mono text-[11px] text-[#15120E]">
-                  {benchmarkTasks[selectedTask].dieFormula}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 pt-3 border-t border-[#E8DFC8] text-[11px] text-[#8A8275] italic">
-              Note: Initial targets represent research hypotheses to be experimentally proven in simulation and physical test cells. QRAEZEV does not publish invented or unverified laboratory outcomes.
-            </div>
-          </div>
-
+            </ScrollReveal>
+          ))}
         </div>
 
       </div>

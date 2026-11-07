@@ -1,13 +1,44 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth light" style="color-scheme: only light;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="only light" />
+    <meta name="supported-color-schemes" content="light" />
+    <meta name="theme-color" content="#F3F1EA" />
+    <meta name="darkreader-lock" />
+    <meta name="darkreader" content="NO-DARK-READER" />
+    
+    <!-- Immunity against Dark Mode extensions and force-dark injectors -->
+    <script>
+      (() => {
+        try {
+          document.documentElement.style.setProperty('color-scheme', 'only light', 'important');
+          const killDarkReader = () => {
+            const injected = document.querySelectorAll('style.darkreader, link.darkreader');
+            if (injected.length > 0) {
+              injected.forEach((el) => el.remove());
+            }
+            if (document.documentElement.classList.contains('darkreader')) {
+              document.documentElement.classList.remove('darkreader');
+            }
+            if (document.documentElement.hasAttribute('data-darkreader-mode')) {
+              document.documentElement.removeAttribute('data-darkreader-mode');
+              document.documentElement.removeAttribute('data-darkreader-scheme');
+            }
+          };
+          killDarkReader();
+          const observer = new MutationObserver(killDarkReader);
+          observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+          window.addEventListener('DOMContentLoaded', killDarkReader);
+        } catch (_) {}
+      })();
+    </script>
     <title>QRAEZEV — The Experience Layer for Physical AI</title>
     <meta name="description" content="QRAEZEV is developing a robot-agnostic cognitive layer that enables machines to use accumulated operational experience to make better future decisions." />
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="/assets/images/favicon.png" />
     
     <!-- OpenGraph Metadata -->
     <meta property="og:type" content="website" />

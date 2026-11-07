@@ -1,198 +1,222 @@
-import { Check, ArrowRight, Compass, Sparkles } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 export function RoadmapVision() {
   const gates = [
     {
-      gate: 'Gate 1',
-      title: 'Canonical Architecture & Schemas',
-      focus: 'Freeze state schema, skill interface, adapter SDK contract, and persistent experience representation.',
-      deliverable: 'Stable API and safety contracts',
+      num: '01',
+      title: 'Gate 1 · Architecture',
       status: 'Current Focus',
+      statusColor: 'text-[#FFB800]',
+      dotColor: 'bg-[#FFB800]',
+      isCurrent: true,
+      desc: 'Freezing canonical robot state, action contracts, adapter SDK, and memory schemas (Month 0–1).',
     },
     {
-      gate: 'Gate 2',
-      title: 'Deterministic Simulation Loop',
-      focus: 'Build simulated robot adapter and run controlled benchmark tasks (insertion, sorting, recovery).',
-      deliverable: 'Ablation against no-memory baseline',
-      status: 'Development',
+      num: '02',
+      title: 'Gate 2 · Simulation',
+      status: 'Next Milestone',
+      statusColor: 'text-white/60',
+      dotColor: 'bg-white/40',
+      isCurrent: false,
+      desc: 'Validating the cognitive loop and repeatable benchmarks against a no-memory baseline (Month 1–3).',
     },
     {
-      gate: 'Gate 3',
-      title: 'Physical Testbed MVP',
-      focus: 'Deploy runtime onto a physical 6-DOF manipulator with RGB-D and torque sensing under strict safety guards.',
-      deliverable: 'Real-world decision traces',
+      num: '03',
+      title: 'Gate 3 · Physical MVP',
       status: 'Planned',
+      statusColor: 'text-white/40',
+      dotColor: 'bg-white/20',
+      isCurrent: false,
+      desc: 'Testing adapter with a 6-DOF arm and RGB-D vision with full decision tracing (Month 3–6).',
     },
     {
-      gate: 'Gate 4',
-      title: 'Experience Proof',
-      focus: 'Statistically demonstrate that memory produces measurable gains in success rate, recovery, and sample efficiency.',
-      deliverable: 'Peer-verifiable empirical proof',
+      num: '04',
+      title: 'Gate 4 · Experience Proof',
       status: 'Planned',
+      statusColor: 'text-white/40',
+      dotColor: 'bg-white/20',
+      isCurrent: false,
+      desc: 'Proving measured gains: higher task success, faster recovery, and greater sample efficiency (Month 6–9).',
     },
     {
-      gate: 'Gate 5',
-      title: 'External Design Partners & Pilots',
-      focus: 'Integrate with 1–3 research labs and robotics startups, validating commercial value on recurring failure modes.',
-      deliverable: 'External deployment evidence',
+      num: '05',
+      title: 'Gate 5 · Technical Pilot',
       status: 'Planned',
+      statusColor: 'text-white/40',
+      dotColor: 'bg-white/20',
+      isCurrent: false,
+      desc: 'Deploying with 1–3 research and industrial partners on live production workcells (Month 9–15).',
     },
     {
-      gate: 'Gate 6',
-      title: 'Productization & Embedded Form',
-      focus: 'Standardize Adapter SDK, deliver deployment tools, and transition software runtime into the onboard Embedded module.',
-      deliverable: 'Production runtime & hardware prototypes',
+      num: '06',
+      title: 'Gate 6 · Productization',
       status: 'Future Gate',
+      statusColor: 'text-white/40',
+      dotColor: 'bg-white/20',
+      isCurrent: false,
+      desc: 'Releasing commercial runtime, developer SDK, and transitioning to onboard embedded modules.',
     },
   ];
 
-  const expansionProgression = [
-    { stage: '1. Manipulation', desc: 'Variable pick, insertion, and sorting workcells' },
-    { stage: '2. Mobile Robotics', desc: 'Autonomous indoor navigation with semantic spatial memory' },
-    { stage: '3. Mobile Manipulation', desc: 'Coordinated mobile arms in dynamic warehouse environments' },
-    { stage: '4. Humanoids', desc: 'General-purpose bi-manual manipulation across complex tools' },
-    { stage: '5. Multi-Robot Fleets', desc: 'Federated synchronization of validated experience across fleets' },
+  const horizon = [
+    {
+      phase: '01',
+      era: 'Current Status Quo',
+      headline: 'Stateless Automation',
+      detail: 'When parts drift, robots freeze. When hardware retires, years of learned edge cases are discarded.',
+    },
+    {
+      phase: '02',
+      era: 'The QRAEZEV Layer',
+      headline: 'Decoupled Experience',
+      detail: 'Decouples operational memory from hardware so machines retain and compound their skills.',
+    },
+    {
+      phase: '03',
+      era: 'Long-Term Vision',
+      headline: 'One Architecture, Many Embodiments',
+      detail: 'A persistent cognitive runtime whose accumulated experience transfers across robot types.',
+    },
   ];
 
   return (
-    <section id="roadmap" className="py-24 md:py-32 border-t border-[#D8D2C2]/70 relative">
-      <div className="site-container">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl 2xl:max-w-4xl 3xl:max-w-5xl mb-20">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#8A8275] mb-3">
-            <span>06 · Research Direction</span>
-            <span aria-hidden="true" className="text-[#BAAF96]">·</span>
-            <span>R&D Progression & North Star</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#15120E] tracking-tight leading-tight text-balance">
-            Disciplined milestones.
+    <section 
+      id="roadmap" 
+      className="w-full relative bg-[#0B0A09] text-[#F3F1EA] overflow-hidden rounded-2xl sm:rounded-[44px] md:rounded-[56px] border-y border-[#2E241D] shadow-2xl transition-all"
+    >
+      {/* Atmospheric Horizon Ambient Glow: Luminous Yellow/Gold */}
+      <div 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-[1100px] h-[350px] rounded-full pointer-events-none blur-[160px] opacity-25"
+        style={{
+          background: 'radial-gradient(ellipse at center, #FFB800 0%, #D49B00 50%, transparent 80%)',
+        }}
+      />
+
+      <div className="site-container relative z-10 px-1.5 sm:px-8 max-w-6xl mx-auto pt-16 sm:pt-28 md:pt-36 lg:pt-44">
+
+        {/* Section Header: Expansive Negative Space & Monumental Typography */}
+        <ScrollReveal scaleFrom={0.92} blurFrom={14} className="pb-12 sm:pb-24 md:pb-36 max-w-4xl">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.04] sm:leading-[1.02] text-white">
+            Disciplined gates.
             <br />
-            A lifelong cognitive architecture.
+            <span className="text-white/40 font-light">Eternal memory.</span>
           </h2>
-          <p className="mt-4 text-lg text-[#443E37] leading-relaxed">
-            We separate near-term engineering gates from long-term research ambition. Our near-term priority is proving that experience improves manipulation decisions. Our long-term mission is creating one evolving artificial brain that persists across many machine embodiments.
+
+          <p className="mt-4 sm:mt-8 text-sm sm:text-lg md:text-xl lg:text-2xl text-white/50 max-w-2xl font-light leading-relaxed">
+            Near-term empirical proof first. An immortal cognitive architecture second.
           </p>
-        </div>
+        </ScrollReveal>
 
-        {/* Staged Engineering Gates */}
-        <div className="bg-[#FAF8F3] border border-[#D8D2C2] rounded-md p-8 sm:p-10 mb-20 shadow-2xs">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-[#E8DFC8] gap-2 mb-8">
-            <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#8A8275]">
-                Engineering Gates · Empirical Milestones
-              </span>
-              <h3 className="text-xl font-bold text-[#15120E]">
-                The Validation Sequence
-              </h3>
-            </div>
-            <span className="text-xs text-[#6B6358] italic">
-              Gates are evidence thresholds, not guaranteed calendar deadlines.
+        {/* MOVEMENT 1: THE SIX ENGINEERING GATES (ZERO-CLICK, SPACIOUS, BREATHABLE) */}
+        <div className="pb-16 sm:pb-32 md:pb-48 lg:pb-60">
+          
+          <ScrollReveal scaleFrom={0.94} blurFrom={10} className="flex items-center justify-between pb-4 sm:pb-8 mb-8 sm:mb-16 md:mb-24 border-b border-white/10">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-white/40">
+              The Six Engineering Gates
             </span>
-          </div>
+            <span className="text-[10px] sm:text-xs font-mono text-[#FFB800] tracking-wider">
+              Sequential Progression
+            </span>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {gates.map((g, idx) => {
-              const tilts = ['-rotate-[0.6deg]', 'rotate-[0.5deg]', '-rotate-[0.4deg]', 'rotate-[0.6deg]', '-rotate-[0.5deg]', 'rotate-[0.4deg]'];
-              const radii = [
-                'rounded-[14px_4px_16px_5px]',
-                'rounded-[5px_15px_6px_14px]',
-                'rounded-[12px_6px_15px_4px]',
-                'rounded-[6px_14px_4px_16px]',
-                'rounded-[15px_5px_14px_6px]',
-                'rounded-[5px_16px_6px_15px]',
-              ];
-              return (
+          {/* 3-Column Effortless Grid with Immense Breathing Room & Exact Footer Corner Radius */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            {gates.map((g, idx) => (
+              <ScrollReveal key={g.num} delay={idx * 100} scaleFrom={0.92} blurFrom={14}>
                 <div 
-                  key={g.gate} 
-                  className={`bg-white border-1.5 border-[#15120E]/30 ${radii[idx]} ${tilts[idx]} hover:rotate-0 p-6 flex flex-col justify-between shadow-[2px_3px_0px_0px_rgba(21,18,14,0.08)] transition-all relative`}
+                  className={`h-full group relative rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-8 md:p-10 border transition-all duration-300 flex flex-col justify-between ${
+                    g.isCurrent 
+                      ? 'bg-white/[0.04] border-[#FFB800]/40 shadow-lg shadow-[#FFB800]/10' 
+                      : 'bg-white/[0.015] border-white/10 hover:bg-white/[0.03] hover:border-white/20'
+                  }`}
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-mono font-bold text-[#15120E] bg-[#FFB800] px-2 py-0.5 rounded-[3px_5px_2px_4px]">
-                        {g.gate}
-                      </span>
-                      <span className="text-[10px] font-mono uppercase text-[#8A8275] bg-[#FAF8F3] px-1.5 py-0.5 rounded border border-[#E8DFC8]">
+                    {/* Top Bar with Gate Indicator and Status */}
+                    <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-white/10">
+                      <div className="flex items-center gap-2 sm:gap-2.5">
+                        <span className={`w-2 h-2 rounded-full ${g.dotColor} ${g.isCurrent ? 'animate-pulse' : ''}`} />
+                        <span className="text-[10px] sm:text-xs font-mono font-bold text-white/50">
+                          Gate {g.num}
+                        </span>
+                      </div>
+                      <span className={`text-[10px] sm:text-[11px] font-mono uppercase tracking-wider ${g.statusColor}`}>
                         {g.status}
                       </span>
                     </div>
-                    <h4 className="text-sm font-bold text-[#15120E] mb-2">{g.title}</h4>
-                    <p className="text-xs text-[#554E44] leading-relaxed mb-4">{g.focus}</p>
+
+                    {/* Title: Big, Crisp, Easy to Read */}
+                    <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4 tracking-tight">
+                      {g.title}
+                    </h3>
+
+                    {/* One-Liner Description: Instantly Scannable */}
+                    <p className="text-xs sm:text-sm md:text-base text-white/60 leading-relaxed font-light mb-6 sm:mb-8">
+                      {g.desc}
+                    </p>
                   </div>
-                  <div className="pt-3 border-t border-[#F3F1EA] text-[11px] text-[#6B6358]">
-                    <strong className="text-[#15120E]">Deliverable:</strong> {g.deliverable}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
 
-          <div className="mt-8 pt-6 border-t border-[#E8DFC8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#6B6358]">
-            <span className="font-semibold text-[#15120E]">Engineering Stance:</span>
-            <span>Simulation first, followed by hardware-in-the-loop, then physical research cells, before industrial pilot lines.</span>
-          </div>
-        </div>
-
-        {/* Long-Term Horizon with Authored Offset Sketch Frame */}
-        <div className="relative">
-          <div 
-            className="absolute inset-0 bg-[#E8DFC8] border border-[#D8D2C2] rounded-[18px_6px_20px_8px] -rotate-1 translate-x-2 translate-y-2 pointer-events-none"
-            aria-hidden="true"
-          />
-          <div className="relative bg-white border-2 border-[#15120E] rounded-[16px_7px_17px_6px] p-8 sm:p-12 shadow-[4px_4px_0px_0px_#15120E] rotate-[0.3deg] hover:rotate-0 transition-transform">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between pb-6 border-b border-[#E8DFC8] gap-4 mb-8">
-              <div className="max-w-xl">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FFB800] bg-[#15120E] px-2.5 py-0.5 rounded-[4px_2px_5px_2px] -rotate-1 inline-block">
-                  The Long-Term North Star
-                </span>
-                <h3 className="text-2xl font-extrabold text-[#15120E] mt-3">
-                  Stable Cognition. Replaceable Embodiment.
-                </h3>
-                <p className="text-xs text-[#443E37] leading-relaxed mt-2">
-                  Today, when robot hardware changes or reaches end-of-life, the software and learned behaviors are discarded and re-engineered. QRAEZEV&apos;s ultimate vision is one persistent cognitive architecture that survives changes in mechanical bodies, sensors, and actuators.
-                </p>
-              </div>
-
-              <div className="p-4 bg-[#FAF8F3] border-1.5 border-[#15120E]/40 rounded-[10px_4px_9px_5px] text-right lg:text-left shrink-0 shadow-[2px_2px_0px_0px_#FFB800] -rotate-1">
-                <div className="text-[11px] font-mono text-[#8A8275] uppercase">Long-Term Formula</div>
-                <div className="text-sm font-extrabold text-[#15120E] mt-0.5">
-                  Cognition + Memory + Compute + Embodiment
-                </div>
-                <div className="text-[11px] text-[#6B6358] mt-1">One evolving brain for many machines</div>
-              </div>
-            </div>
-
-          {/* Sequential Expansion Diagram */}
-          <div className="space-y-3">
-            <span className="text-xs font-mono uppercase text-[#8A8275] block">
-              Architectural Expansion Sequence
-            </span>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 pt-4">
-              {expansionProgression.map((item, index) => (
-                <div key={item.stage} className="p-3.5 bg-[#FAF8F3] border border-[#E8DFC8] rounded flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] font-mono font-bold text-[#FFB800] block mb-1">
-                      Phase {index + 1}
+                  <div className="pt-4 sm:pt-6 border-t border-white/10 flex items-center justify-between text-[11px] sm:text-xs font-mono text-white/30">
+                    <span>Milestone {g.num}</span>
+                    <span className={g.isCurrent ? 'text-[#FFB800]' : ''}>
+                      {g.isCurrent ? 'Active Workstream' : 'Sequential'}
                     </span>
-                    <h5 className="text-xs font-bold text-[#15120E]">{item.stage}</h5>
-                    <p className="text-[11px] text-[#554E44] mt-1.5 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#E8DFC8] flex items-center justify-between flex-wrap gap-4 text-xs text-[#8A8275]">
-            <p className="italic">
-              &ldquo;A robot should not have to experience the same failure twice.&rdquo;
-            </p>
-            <span className="font-mono text-[#15120E] font-medium">QRAEZEV Architectural Thesis</span>
-          </div>
         </div>
+
+        {/* MOVEMENT 2: THE NORTH STAR MONOLITH (OPEN & EXPANSIVE) */}
+        <div className="pb-16 sm:pb-32 md:pb-48 lg:pb-60 border-t border-white/10 pt-16 sm:pt-28 md:pt-44">
+          
+          <ScrollReveal scaleFrom={0.92} blurFrom={14} className="max-w-3xl mb-12 sm:mb-24 md:mb-36">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.25em] text-[#FFB800] block mb-4 sm:mb-8">
+              The North Star
+            </span>
+            <h3 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-white tracking-tight leading-[1.08] sm:leading-[1.05]">
+              Bodies are disposable.
+              <br />
+              <span className="font-extrabold text-[#FFB800]">Experience is forever.</span>
+            </h3>
+          </ScrollReveal>
+
+          {/* 3 Pillars: Wide Open Space, Zero Clutter, Radius matching footer */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+            {horizon.map((h, idx) => (
+              <ScrollReveal key={h.phase} delay={idx * 130} scaleFrom={0.91} blurFrom={16}>
+                <div 
+                  className="h-full rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-8 lg:p-12 bg-white/[0.02] border border-white/10 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#FFB800]/80 mb-4 sm:mb-6">
+                      Phase {h.phase} · {h.era}
+                    </div>
+                    <h4 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4 tracking-tight">
+                      {h.headline}
+                    </h4>
+                    <p className="text-xs sm:text-sm md:text-base text-white/50 leading-relaxed font-light">
+                      {h.detail}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+        </div>
+
+        {/* Closing Single-Line Manifesto (Strict Bottom Boundary with Generous Spacing) */}
+        <ScrollReveal delay={150} scaleFrom={0.94} blurFrom={10}>
+          <div className="pb-12 sm:pb-24 md:pb-36 border-t border-white/10 pt-8 sm:pt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 text-xs text-white/40 font-mono">
+            <span>&ldquo;A robot should become measurably better at future decisions because it remembers and learns from previous situations.&rdquo;</span>
+            <span className="text-[#FFB800]">QRAEZEV Core Thesis</span>
+          </div>
+        </ScrollReveal>
+
       </div>
 
-    </div>
-  </section>
-);
+    </section>
+  );
 }

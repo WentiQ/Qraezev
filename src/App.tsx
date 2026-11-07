@@ -23,7 +23,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3F1EA] text-[#15120E] flex flex-col selection:bg-[#FFB800]/30 selection:text-[#15120E]">
+    <div className="min-h-screen bg-[#F3F1EA] text-[#15120E] flex flex-col selection:bg-[#FFB800]/30 selection:text-[#15120E] overflow-x-hidden">
       {/* Top Bar Navigation */}
       <Navbar onOpenContact={handleOpenContact} />
 

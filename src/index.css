@@ -6,13 +6,40 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: only light !important;
 }
 
+html,
 body {
-  font-family: var(--font-sans);
-  background-color: #F3F1EA;
-  color: #15120E;
+  color-scheme: only light !important;
+  background-color: #F3F1EA !important;
+  color: #15120E !important;
+}
+
+/* Force light color scheme on form controls and interactive elements */
+input,
+textarea,
+select,
+button {
+  color-scheme: only light !important;
+}
+
+/* Strictly prevent browser or OS auto-darkening / theme inversion */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body {
+    color-scheme: only light !important;
+    background-color: #F3F1EA !important;
+    color: #15120E !important;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    color-scheme: only light !important;
+  }
 }
 
 main > section:not(:first-child) .text-xs {
@@ -27,15 +54,16 @@ code, pre, .font-mono {
 /* Fluid container adopting seamlessly to any high-width display */
 .site-container {
   width: 100%;
-  max-width: 96vw;
+  max-width: 99vw;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 @media (min-width: 640px) {
   .site-container {
+    max-width: 96vw;
     padding-left: 2rem;
     padding-right: 2rem;
   }
