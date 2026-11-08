@@ -5,7 +5,7 @@ export function TeamSection() {
   const founders = [
     {
       name: 'Dinesh Polavarapu',
-      role: 'Founder & CEO',
+      role: 'Co-founder & CEO',
       domain: 'Physical Robotics & Product',
       focus: 'IIT Tirupati. Nation Builder winner (Guardian AI). Leads embedded control, robot integration, and product strategy.',
       education: 'IIT Tirupati · B.Tech Mechanical Engineering',
