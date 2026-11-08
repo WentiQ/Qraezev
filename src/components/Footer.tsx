@@ -429,60 +429,7 @@ export function Footer() {
           }}
         />
 
-        {/* Architectural Logo Outline in Background - Fully Visible & Perfectly Contained */}
-        <div
-          className="absolute inset-x-0 top-0 bottom-8 sm:bottom-16 md:bottom-20 flex items-center justify-center pointer-events-none select-none z-0 px-4 transition-all duration-[1200ms] ease-out"
-          style={{
-            opacity: wordmarkInView ? 0.75 : 0.55,
-            transform: wordmarkInView ? 'scale(1)' : 'scale(0.95)',
-          }}
-        >
-          <svg
-            viewBox="-12 -12 398 443"
-            className="h-[62%] sm:h-[72%] md:h-[80%] max-h-[340px] sm:max-h-[420px] md:max-h-[480px] lg:max-h-[520px] w-auto max-w-[85vw] drop-shadow-[0_0_24px_rgba(255,184,0,0.3)]"
-            fill="none"
-            role="presentation"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="footerLogoOutlineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFE082" stopOpacity="0.95" />
-                <stop offset="50%" stopColor="#FFB800" stopOpacity="1" />
-                <stop offset="100%" stopColor="#E5A000" stopOpacity="0.85" />
-              </linearGradient>
-              <filter id="outlineGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2.5" result="glow" />
-                <feComposite in="SourceGraphic" in2="glow" operator="over" />
-              </filter>
-              <g id="footerLogoUnit">
-                <polygon
-                  points="258,0 258,196 165,128"
-                  fill="none"
-                  stroke="url(#footerLogoOutlineGrad)"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                />
-                <polygon
-                  points="144,0 258,0 88,228 0,160"
-                  fill="none"
-                  stroke="url(#footerLogoOutlineGrad)"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                />
-              </g>
-            </defs>
 
-            {/* Primary Ribbon Outline */}
-            <use href="#footerLogoUnit" filter="url(#outlineGlow)" />
-
-            {/* Interlocking Partner Ribbon Outline */}
-            <use
-              href="#footerLogoUnit"
-              transform="translate(116 191) rotate(180 129 114)"
-              filter="url(#outlineGlow)"
-            />
-          </svg>
-        </div>
 
         {/* Main Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto pt-6 sm:pt-10 md:pt-16 px-4 sm:px-12 md:px-16 lg:px-20 pb-0">
