@@ -52,11 +52,11 @@ export function ApproachSection() {
         >
           <defs>
             <linearGradient id="sepLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#FFA066" stopOpacity="0.4" />
+              <stop offset="0%" stopColor="#FFE082" stopOpacity="0.4" />
               <stop offset="20%" stopColor="#FFB800" stopOpacity="0.85" />
               <stop offset="50%" stopColor="#FFC837" stopOpacity="0.95" />
               <stop offset="80%" stopColor="#FFB800" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#D46215" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#FFB800" stopOpacity="0.4" />
             </linearGradient>
             <filter id="sepLineGlowEffect" x="-10%" y="-30%" width="120%" height="160%">
               <feGaussianBlur stdDeviation="2.5" result="blur" />

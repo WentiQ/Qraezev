@@ -57,14 +57,14 @@ export function ValidationSection() {
             className="rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 md:p-16 border border-[#2E241E] shadow-2xl relative overflow-hidden text-center"
             style={{
               backgroundColor: '#141210',
-              backgroundImage: 'radial-gradient(130% 90% at 50% 115%, rgba(255, 184, 0, 0.28) 0%, rgba(210, 105, 30, 0.18) 45%, rgba(20, 16, 14, 0.95) 75%, #141210 100%)',
+              backgroundImage: 'radial-gradient(130% 90% at 50% 115%, rgba(255, 184, 0, 0.28) 0%, rgba(255, 184, 0, 0.18) 45%, rgba(20, 16, 14, 0.95) 75%, #141210 100%)',
             }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#FFA066] mb-5 sm:mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#FFB800] mb-5 sm:mb-8">
               <span>Controlled Empirical Benchmark</span>
             </div>
 
-            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-mono text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#FFA066] tracking-tight mb-4 sm:mb-6">
+            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-mono text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-[#FFB800] tracking-tight mb-4 sm:mb-6">
               50% Fewer Failed Trials
             </div>
 
@@ -74,7 +74,7 @@ export function ValidationSection() {
 
             <div className="pt-5 sm:pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs font-mono text-white/50 max-w-2xl mx-auto">
               <span>Baseline: Matched Robot &amp; Task</span>
-              <span className="text-[#FFA066] font-bold">Goal: Faster Recovery</span>
+              <span className="text-[#FFB800] font-bold">Goal: Faster Recovery</span>
               <span>Sequence: Simulation → Physical MVP</span>
             </div>
           </div>

@@ -40,7 +40,7 @@ export function ProductDirection({ onOpenContact }: ProductDirectionProps) {
                   </span>
                 </div>
 
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FAF8F3] border border-[#E8DFC8] text-[#D46215] flex items-center justify-center mb-4 sm:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#FFB800]/15 border border-[#FFB800]/30 text-[#15120E] flex items-center justify-center mb-4 sm:mb-6">
                   <Layers className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
 
@@ -87,7 +87,7 @@ export function ProductDirection({ onOpenContact }: ProductDirectionProps) {
             <div className="h-full flex flex-col justify-between p-4 sm:p-10 lg:p-14 rounded-2xl sm:rounded-[36px] md:rounded-[42px] bg-[#15120E] text-[#F3F1EA] border border-[#2A241D] shadow-xl">
               <div>
                 <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-white/10">
-                  <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066]">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFB800]">
                     Product B · Onboard Brain
                   </span>
                   <span className="text-[10px] sm:text-xs font-mono text-white/60 bg-white/10 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full">
@@ -95,7 +95,7 @@ export function ProductDirection({ onOpenContact }: ProductDirectionProps) {
                   </span>
                 </div>
 
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-[#FFA066] flex items-center justify-center mb-4 sm:mb-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-[#FFB800] flex items-center justify-center mb-4 sm:mb-6">
                   <Cpu className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
 
@@ -128,10 +128,10 @@ export function ProductDirection({ onOpenContact }: ProductDirectionProps) {
                 <span className="text-[10px] sm:text-xs font-mono text-white/40">Hardware Co-Design</span>
                 <button
                   onClick={() => onOpenContact('embedded')}
-                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066] hover:text-white transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFB800] hover:text-white transition-colors cursor-pointer"
                 >
                   <span>Hardware Blueprint</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFA066]" />
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFB800]" />
                 </button>
               </div>
             </div>

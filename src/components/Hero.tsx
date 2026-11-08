@@ -28,7 +28,7 @@ export function Hero({ onOpenContact }: HeroProps) {
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85vw] max-w-[900px] h-[350px] sm:h-[400px] rounded-full pointer-events-none blur-[140px] opacity-25"
         style={{
-          background: 'radial-gradient(ellipse at center, #FFB800 0%, #D46215 50%, transparent 80%)',
+          background: 'radial-gradient(ellipse at center, #FFD666 0%, #FFB800 50%, transparent 80%)',
         }}
       />
 
@@ -76,7 +76,7 @@ export function Hero({ onOpenContact }: HeroProps) {
         {/* Monospace Architecture Telemetry Status Line */}
         <ScrollReveal delay={550} duration={850} scaleFrom={0.95} blurFrom={10} className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 gap-y-1.5 text-[10px] sm:text-xs font-mono text-[#8A8275] uppercase tracking-wider">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D46215]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFB800]" />
             <span>Deterministic Safety Gateway</span>
           </div>
           <span className="text-[#D8D2C2] hidden sm:inline">·</span>

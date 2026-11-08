@@ -57,7 +57,7 @@ export default function App() {
         <ContactSection initialMode={contactMode} />
       </main>
 
-      {/* Footer */}
+      {/* Unified Footer with Integrated Fragmented Particle Wave */}
       <Footer />
     </div>
   );

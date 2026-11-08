@@ -29,9 +29,9 @@ export function ArchitectureSection() {
       owner: 'Safety Gateway / Safety PLC',
       authority: 'Supreme Safety Authority',
       role: 'Enforces hard limits, E-stops, and interlocks to stop motion independently.',
-      borderAccent: 'border-[#E06D6D]/40',
-      tagColor: 'text-[#E06D6D] bg-[#E06D6D]/10 border-[#E06D6D]/30',
-      dotColor: 'bg-[#E06D6D]',
+      borderAccent: 'border-[#FFB800]/40',
+      tagColor: 'text-[#FFB800] bg-[#FFB800]/10 border-[#FFB800]/30',
+      dotColor: 'bg-[#FFB800]',
     },
   ];
 

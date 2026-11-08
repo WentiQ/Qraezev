@@ -9,7 +9,7 @@ export function ProblemSection() {
       title: 'Day 1,000 is still Day 1',
       desc: 'Conventional robots retain zero operational memory. A 4 mm part variance causes the exact same mechanical fault on Day 1,000 as on Day 1.',
       sub: 'Status Quo: Stateless Controllers',
-      subColor: 'text-[#E06D2D]',
+      subColor: 'text-[#FFB800]',
       stats: [
         { label: 'Control Loop', value: 'Stateless Repeat' },
         { label: 'Unrecovered Variance', value: 'Line Halts' },
@@ -23,7 +23,7 @@ export function ProblemSection() {
       title: 'Integration & Downtime Burden',
       desc: 'Integration and programming cost 4–5× the robot itself. When parts drift, machines freeze and require manual fixes.',
       sub: 'Industry Burden: 4–5× Robot Cost',
-      subColor: 'text-[#E06D2D]',
+      subColor: 'text-[#FFB800]',
       stats: [
         { label: 'Integration Share', value: '>50% Lifetime Cost' },
         { label: 'Cell Cost Multiplier', value: '4–5× Hardware' },
@@ -37,7 +37,7 @@ export function ProblemSection() {
       title: 'Zero Learning After Deployment',
       desc: 'Over 600,000 robots are installed yearly. Seeing is solved with cameras, but every machine starts blank and learns nothing from failure.',
       sub: 'Root Cause: No Experience Layer',
-      subColor: 'text-[#FFA066]',
+      subColor: 'text-[#FFB800]',
       stats: [
         { label: 'Global Deployments', value: '600K+ / Year' },
         { label: 'Cross-Cell Sharing', value: 'Isolated Silos' },
@@ -104,7 +104,7 @@ export function ProblemSection() {
                   <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-10 pb-6 sm:pb-10 border-b border-white/10">
                     <div>
                       <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-5">
-                        <span className="text-[10px] sm:text-xs font-mono font-bold text-[#FFA066] uppercase tracking-wider">
+                        <span className="text-[10px] sm:text-xs font-mono font-bold text-[#FFB800] uppercase tracking-wider">
                           Reality {beat.num}
                         </span>
                         <span className="text-white/20">/</span>
@@ -119,7 +119,7 @@ export function ProblemSection() {
                     </div>
 
                     {/* Giant High-Impact Number */}
-                    <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-[#FFA066] font-mono shrink-0 leading-none">
+                    <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-[#FFB800] font-mono shrink-0 leading-none">
                       {beat.metric}
                     </div>
                   </div>
@@ -174,12 +174,12 @@ export function ProblemSection() {
                 className="h-full rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 lg:p-14 border border-[#2E241E] shadow-xl flex flex-col justify-between"
                 style={{
                   backgroundColor: '#110F0E',
-                  backgroundImage: 'radial-gradient(120% 80% at 50% 120%, rgba(220, 80, 80, 0.12) 0%, rgba(20, 16, 15, 0.95) 60%, #110F0E 100%)',
+                  backgroundImage: 'radial-gradient(120% 80% at 50% 120%, rgba(255, 184, 0, 0.08) 0%, rgba(20, 16, 15, 0.95) 60%, #110F0E 100%)',
                 }}
               >
                 <div>
                   <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-white/10">
-                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#E06D6D]">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFB800]">
                       Without Memory
                     </span>
                     <span className="text-[10px] sm:text-xs font-mono text-white/40">
@@ -194,7 +194,7 @@ export function ProblemSection() {
                   {/* 3 Ultra-Clean Steps */}
                   <div className="space-y-4 sm:space-y-8">
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">01</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">01</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Part sits 4 mm off-center</div>
                         <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Controller pushes straight and jams.</div>
@@ -202,7 +202,7 @@ export function ProblemSection() {
                     </div>
 
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">02</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">02</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Line halts</div>
                         <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Technician manually clears the cell.</div>
@@ -210,7 +210,7 @@ export function ProblemSection() {
                     </div>
 
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#E06D6D] mt-0.5 shrink-0">03</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">03</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Repeats next shift</div>
                         <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 font-light">Zero memory kept; exact failure repeats.</div>
@@ -221,7 +221,7 @@ export function ProblemSection() {
 
                 <div className="mt-8 sm:mt-14 pt-4 sm:pt-6 border-t border-white/10 flex items-center justify-between">
                   <span className="text-[10px] sm:text-xs font-mono uppercase text-white/40">Status Quo:</span>
-                  <span className="text-xs sm:text-sm font-mono font-bold text-[#E06D6D]">Recurring Line Downtime</span>
+                  <span className="text-xs sm:text-sm font-mono font-bold text-[#FFB800]">Recurring Line Downtime</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -232,7 +232,7 @@ export function ProblemSection() {
                 className="h-full relative rounded-2xl sm:rounded-[36px] md:rounded-[42px] p-4 sm:p-10 lg:p-14 border border-[#FFB800]/40 shadow-2xl flex flex-col justify-between overflow-hidden group"
                 style={{
                   backgroundColor: '#141210',
-                  backgroundImage: 'radial-gradient(130% 85% at 50% 115%, rgba(255, 184, 0, 0.32) 0%, rgba(210, 105, 30, 0.22) 40%, rgba(25, 20, 16, 0.95) 75%, #141210 100%)',
+                  backgroundImage: 'radial-gradient(130% 85% at 50% 115%, rgba(255, 184, 0, 0.32) 0%, rgba(255, 184, 0, 0.22) 40%, rgba(25, 20, 16, 0.95) 75%, #141210 100%)',
                 }}
               >
                 {/* Warm Ambient Internal Light Glow */}
@@ -240,7 +240,7 @@ export function ProblemSection() {
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between pb-4 sm:pb-6 mb-5 sm:mb-8 border-b border-[#FFB800]/20">
-                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFA066]">
+                    <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-[#FFB800]">
                       With QRAEZEV
                     </span>
                     <span className="text-[10px] sm:text-xs font-mono text-[#FFB800] bg-[#FFB800]/10 px-2.5 py-0.5 rounded-full border border-[#FFB800]/30">
@@ -255,7 +255,7 @@ export function ProblemSection() {
                   {/* 3 Ultra-Clean Steps */}
                   <div className="space-y-4 sm:space-y-8">
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">01</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">01</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Detects variance</div>
                         <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Perceives 4 mm offset and resistance.</div>
@@ -263,7 +263,7 @@ export function ProblemSection() {
                     </div>
 
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">02</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">02</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Recalls prior fix</div>
                         <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Past push jammed; offsets 4 mm first.</div>
@@ -271,7 +271,7 @@ export function ProblemSection() {
                     </div>
 
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="text-xs font-mono font-bold text-[#FFA066] mt-0.5 shrink-0">03</span>
+                      <span className="text-xs font-mono font-bold text-[#FFB800] mt-0.5 shrink-0">03</span>
                       <div>
                         <div className="text-sm sm:text-base md:text-lg font-semibold text-white">Adapts and finishes</div>
                         <div className="text-[11px] sm:text-xs text-[#D8D2C2]/60 mt-0.5 font-light">Completes task; records successful move.</div>

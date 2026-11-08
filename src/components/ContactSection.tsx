@@ -66,7 +66,7 @@ export function ContactSection({ initialMode: _initialMode }: ContactSectionProp
           
           {submitted ? (
             <div className="text-center py-10 sm:py-16 px-5 sm:px-8 rounded-2xl sm:rounded-3xl bg-white border border-[#D8D2C2] shadow-sm space-y-4 sm:space-y-6 animate-in fade-in duration-300">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#FFF3E0] text-[#D46215] flex items-center justify-center mx-auto border border-[#FFA066]/40">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#FFB800]/15 text-[#FFB800] flex items-center justify-center mx-auto border border-[#FFB800]/40">
                 <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               
