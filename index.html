@@ -103,11 +103,6 @@
         </defs>
 
         <g id="logo">
-          <circle id="orbit" cx="187" cy="209.5" r="213.9" fill="none" stroke="#15120E" stroke-width="1"
-                  pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1" opacity="0"
-                  transform="rotate(-90 187 209.5)"/>
-          <circle id="dot" cx="187" cy="209.5" r="3" fill="#15120E" opacity="0"/>
-
           <use id="g5" href="#unit" opacity="0"/><use id="g4" href="#unit" opacity="0"/>
           <use id="g3" href="#unit" opacity="0"/><use id="g2" href="#unit" opacity="0"/>
           <use id="g1" href="#unit" opacity="0"/>
@@ -132,7 +127,7 @@
       const fmt = a => a.map(p => p[0].toFixed(2) + ',' + p[1].toFixed(2)).join(' ');
 
       const svg = $('svg'), logo = $('logo'), front = $('front'), fold = $('fold'),
-            sheen = $('sheen'), orbit = $('orbit'), dot = $('dot'), twin = $('twin'),
+            sheen = $('sheen'), twin = $('twin'),
             base = $('base'), ghosts = [1,2,3,4,5].map(k => $('g' + k)), loader = $('loader');
 
       const P1 = [144,0], P2 = [258,0], P3 = [88,228], P4 = [0,160];
@@ -162,14 +157,7 @@
         const fx = x => 258 - (258 - x) * s;
         fold.setAttribute('points', fmt([[fx(258),0],[fx(258),196],[fx(165),128]]));
 
-        // 2. Orbit guide draws itself; it passes through the logo's outer tips
-        const o = easeOut(seg(t, 1.7, 2.6));
-        const oFade = 1 - seg(t, 4.8, 5.6);
-        orbit.setAttribute('stroke-dashoffset', (1 - o).toFixed(4));
-        orbit.setAttribute('opacity', (.35 * oFade).toFixed(3));
-        dot.setAttribute('opacity', (o * oFade).toFixed(3));
-
-        // 3. Twin swings 180 degrees around the centre, leaving a trail
+        // 2. Twin swings 180 degrees around the centre, leaving a trail
         const sw = easeIO(seg(t, 2.5, 4.7)), th = 180 * sw;
         twin.setAttribute('opacity', seg(t, 2.5, 2.7).toFixed(3));
         twin.setAttribute('transform', `rotate(${th.toFixed(3)} ${CX} ${CY})`);
