@@ -431,11 +431,11 @@ export function Footer() {
 
 
 
-        {/* Main Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto pt-6 sm:pt-10 md:pt-16 px-4 sm:px-12 md:px-16 lg:px-20 pb-0">
+        {/* Main Content Container - Fluid & Flexible across all display widths */}
+        <div className="relative z-10 site-container w-full pt-6 sm:pt-10 md:pt-16 pb-0">
           
           {/* Top Row: Navigation Links & Contact / Social Block with ScrollReveal */}
-          <div className="flex flex-col sm:flex-row justify-between items-start gap-8 sm:gap-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-8 sm:gap-6 w-full">
             
             {/* Left Column: Vertical Navigation */}
             <ScrollReveal delay={80} scaleFrom={0.93} blurFrom={12}>
@@ -483,8 +483,8 @@ export function Footer() {
           </div>
 
           {/* Mid-Row: Subtle Research Notice & Copyright inside the attached dark footer */}
-          <ScrollReveal delay={250} scaleFrom={0.95} blurFrom={8}>
-            <div className="mt-8 sm:mt-14 md:mt-18 pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] text-white/45 font-mono">
+          <ScrollReveal delay={250} scaleFrom={0.95} blurFrom={8} className="w-full">
+            <div className="mt-8 sm:mt-14 md:mt-18 pt-4 sm:pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3 text-[10px] sm:text-[11px] text-white/45 font-mono w-full">
               <p className="text-center sm:text-left">
                 Research Notice: QRAEZEV is building a persistent experience layer for physical AI.
               </p>
@@ -501,27 +501,55 @@ export function Footer() {
             </div>
           </ScrollReveal>
 
-          {/* Bottom Area: Monumental illuminated Qraezev Wordmark with dynamic blur-to-clear scale entrance */}
+          {/* Bottom Area: Monumental illuminated Qraezev Wordmark with seamless organic aura (no box / clipping artifacts) */}
           <div 
             ref={wordmarkRef}
-            className="mt-6 sm:mt-10 md:mt-18 -mb-2 sm:-mb-3 md:-mb-5 overflow-hidden select-none pointer-events-none flex justify-center items-end"
+            className="relative mt-8 sm:mt-12 md:mt-20 -mb-2 sm:-mb-3 md:-mb-5 flex justify-center items-end select-none pointer-events-none w-full"
           >
-            <h2
-              className="font-bold leading-[0.74] text-center w-full will-change-transform"
+            {/* Ambient warm radial bloom anchored directly behind the wordmark */}
+            <div
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-full max-w-[1500px] h-[340px] pointer-events-none rounded-full blur-[80px] sm:blur-[110px] transition-all duration-[1400ms] ease-out -z-0"
               style={{
-                fontSize: 'clamp(2.75rem, 16vw, 19rem)',
-                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 230, 210, 0.44) 48%, rgba(255, 205, 160, 0.82) 100%)',
+                background: 'radial-gradient(ellipse at center, rgba(255, 184, 0, 0.42) 0%, rgba(220, 150, 0, 0.2) 45%, rgba(255, 184, 0, 0.05) 70%, transparent 85%)',
+                opacity: wordmarkInView ? 1 : 0.15,
+                transform: wordmarkInView ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0.8)',
+              }}
+            />
+
+            {/* Soft, fully-feathered golden text glow silhouette (Pure colored text with gaussian blur, zero background-clip bounding-box artifacts) */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 flex justify-center items-end text-center font-bold leading-[0.78] tracking-tight will-change-transform text-[#FFB800] select-none pointer-events-none z-0"
+              style={{
+                fontSize: 'clamp(2.75rem, 15vw, 24rem)',
+                filter: wordmarkInView ? 'blur(32px)' : 'blur(8px)',
+                opacity: wordmarkInView ? 0.7 : 0,
+                transform: wordmarkInView
+                  ? 'translateY(0px) scale(1)'
+                  : 'translateY(42px) scale(0.86)',
+                letterSpacing: wordmarkInView ? '-0.035em' : '0.04em',
+                transitionProperty: 'opacity, transform, filter, letter-spacing',
+                transitionDuration: '1350ms',
+                transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+              }}
+            >
+              Qraezev
+            </span>
+
+            {/* Crisp Foreground Luminous Text Fill with Gold Horizon Gradient */}
+            <h2
+              className="relative z-10 font-bold leading-[0.78] text-center w-full will-change-transform tracking-tight select-none pointer-events-none"
+              style={{
+                fontSize: 'clamp(2.75rem, 15vw, 24rem)',
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 238, 215, 0.78) 45%, rgba(255, 198, 125, 0.92) 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 opacity: wordmarkInView ? 1 : 0,
                 transform: wordmarkInView
                   ? 'translateY(0px) scale(1)'
                   : 'translateY(42px) scale(0.86)',
-                filter: wordmarkInView
-                  ? 'blur(0px) drop-shadow(0 0 65px rgba(255, 184, 0, 0.55))'
-                  : 'blur(22px) drop-shadow(0 0 0px rgba(255, 184, 0, 0))',
                 letterSpacing: wordmarkInView ? '-0.035em' : '0.04em',
-                transitionProperty: 'opacity, transform, filter, letter-spacing',
+                transitionProperty: 'opacity, transform, letter-spacing',
                 transitionDuration: '1350ms',
                 transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
               }}
